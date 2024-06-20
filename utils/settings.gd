@@ -2,14 +2,14 @@ class_name Settings
 extends Resource
 	
 #camera sensitivity
-var camera_zoom_sensitivity = 0.5;
-var camera_follow_speed = 1;
+@export var camera_zoom_sensitivity = 0.5;
+@export var camera_follow_speed = 1;
 
 #menu options
-var close_context_on_mouse_exit: bool = true;
+@export var close_context_on_mouse_exit: bool = true;
 
 #volume
-var master_volume: float = 1;
+@export var master_volume: float = 1;
 signal volume_changed(new_value: float, bus_name: String);
 
 func _ready():
