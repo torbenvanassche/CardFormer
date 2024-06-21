@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=9 format=3 uid="uid://juw7ny6olbq7"]
 
 [ext_resource type="Script" path="res://utils/scene_manager.gd" id="1_hf3hb"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
 [ext_resource type="Script" path="res://utils/camera.gd" id="2_hjqft"]
 [ext_resource type="Script" path="res://utils/settings.gd" id="3_ga4kw"]
 [ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="4_es1fv"]
+[ext_resource type="Script" path="res://player/player_controller.gd" id="5_bra37"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -20,19 +21,21 @@ size = Vector2(20, 23)
 script = ExtResource("1_hf3hb")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(3, 3)
 script = ExtResource("2_hjqft")
 target = NodePath("../CharacterBody2D")
-initial_zoom = 2.0
-zoom_interval = Vector2(0.5, 2)
+initial_zoom = 3.0
+zoom_interval = Vector2(1, 2.5)
 settings_profile = SubResource("Resource_glrhp")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_8lwmk")
 format = 2
-layer_0/tile_data = PackedInt32Array(131070, 8, 0, 131071, 8, 0)
+layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536, 131080, 0, 65537, 131080, 0, 131069, 131080, 0, 65538, 196616, 0, 131068, 131080, 0, 131066, 131080, 0, 131067, 131080, 0, 131065, 131080, 0, 131064, 131080, 0, 131063, 131080, 0, 131062, 131080, 0, 131061, 65544, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-19, 7)
+script = ExtResource("5_bra37")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -1.5)
