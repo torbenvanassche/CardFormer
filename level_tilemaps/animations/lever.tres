@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bvg7iw4mqai2f"]
+
+[ext_resource type="Texture2D" uid="uid://ko6kjk1cymt3" path="res://level_tilemaps/import/tilemap_base.png" id="1_xu7nn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef2hj"]
+atlas = ExtResource("1_xu7nn")
+region = Rect2(76, 57, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_visks"]
+atlas = ExtResource("1_xu7nn")
+region = Rect2(95, 57, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvnus"]
+atlas = ExtResource("1_xu7nn")
+region = Rect2(114, 57, 18, 18)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef2hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_visks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvnus")
+}],
+"loop": false,
+"name": &"turn_on",
+"speed": 5.0
+}]

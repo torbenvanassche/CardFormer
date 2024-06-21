@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=8 format=3 uid="uid://juw7ny6olbq7"]
 
 [ext_resource type="Script" path="res://utils/game_manager.gd" id="1_h4yfy"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
 [ext_resource type="Script" path="res://utils/camera.gd" id="2_hjqft"]
 [ext_resource type="Script" path="res://utils/settings.gd" id="3_ga4kw"]
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="4_56i5u"]
+[ext_resource type="PackedScene" uid="uid://p42vuai7yx3" path="res://level_tilemaps/scenes/lever.tscn" id="5_ubcua"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -13,9 +14,10 @@ camera_follow_speed = 1
 close_context_on_mouse_exit = true
 master_volume = 1.0
 
-[node name="game_scene" type="Node2D" node_paths=PackedStringArray("tilemap")]
+[node name="game_scene" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
 script = ExtResource("1_h4yfy")
 tilemap = NodePath("TileMap")
+player = NodePath("Character")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 zoom = Vector2(3, 3)
@@ -28,6 +30,9 @@ settings_profile = SubResource("Resource_glrhp")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_8lwmk")
 format = 2
-layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536, 131080, 0, 65537, 131080, 0, 131069, 131080, 0, 65538, 196616, 0, 131068, 131080, 0, 131066, 131080, 0, 131067, 131080, 0, 131065, 131080, 0, 131064, 131080, 0, 131063, 131080, 0, 131062, 131080, 0, 131061, 65544, 0, 65529, 262152, 3)
+layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536, 131080, 0, 65537, 131080, 0, 131069, 131080, 0, 65538, 196616, 0, 131068, 131080, 0, 131066, 131080, 0, 131067, 131080, 0, 131065, 131080, 0, 131063, 131080, 0, 131062, 131080, 0, 131061, 65544, 0, 131064, 131080, 0)
+
+[node name="lever" parent="TileMap" instance=ExtResource("5_ubcua")]
+position = Vector2(-151, 11)
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]

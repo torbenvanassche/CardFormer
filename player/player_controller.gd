@@ -1,24 +1,28 @@
+class_name PlayerController
 extends CharacterBody2D
 
 @export var player_sprite: AnimatedSprite2D;
+@export var player_trigger: Area2D;
+var current_triggers: Array[Node2D];
 
-@export var speed = 150.0
-@export var jump_velocity = -300.0
+@export var speed: float = 150.0
+@export var jump_velocity: float = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	player_trigger.area_entered.connect(_on_enter)
+	player_trigger.area_exited.connect(_on_leave)
+
 func _physics_process(delta):	
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * speed
@@ -30,19 +34,20 @@ func _physics_process(delta):
 		player_sprite.play("walk")
 	else:
 		player_sprite.stop()
-
-	handle_trigger();
-	handle_interactable()
+		
+	if Input.is_action_just_pressed("interact") && current_triggers.size() != 0:
+		var player: PlayerController = Manager.instance.player;
+		current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
+			return player.position.distance_squared_to(a.position) > player.position.distance_squared_to(b.position))
+		if current_triggers[0].has_method("execute"):
+			current_triggers[0].execute();
 	move_and_slide()
-	
-func handle_trigger():
-	# Handle interactions
-	var tile_data: Script = Manager.instance.get_custom_data_at(position, "trigger")
-	if tile_data != null:
-		Manager.instance.on_tilemap_interaction.emit(Manager.instance.get_tile_position(position), tile_data)
 
-func handle_interactable():
-	# Handle interactions
-	var tile_data: Script = Manager.instance.get_custom_data_at(position, "interaction")
-	if tile_data != null && Input.is_action_just_pressed("interact"):
-		Manager.instance.on_tilemap_interaction.emit(Manager.instance.get_tile_position(position), tile_data)
+func _on_enter(body: Node2D):
+	if body != Manager.instance.player:
+		if !current_triggers.has(body):
+			current_triggers.push_back(body);
+	
+func _on_leave(body: Node2D):
+	if body != Manager.instance.player:
+		current_triggers.erase(body);
