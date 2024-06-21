@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
 [ext_resource type="Script" path="res://utils/camera.gd" id="2_hjqft"]
 [ext_resource type="Script" path="res://utils/settings.gd" id="3_ga4kw"]
-[ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="4_es1fv"]
 [ext_resource type="Script" path="res://player/player_controller.gd" id="5_bra37"]
+[ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="6_n74p6"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -33,16 +33,16 @@ tile_set = ExtResource("2_8lwmk")
 format = 2
 layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536, 131080, 0, 65537, 131080, 0, 131069, 131080, 0, 65538, 196616, 0, 131068, 131080, 0, 131066, 131080, 0, 131067, 131080, 0, 131065, 131080, 0, 131064, 131080, 0, 131063, 131080, 0, 131062, 131080, 0, 131061, 65544, 0)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player_sprite")]
 position = Vector2(-19, 7)
 script = ExtResource("5_bra37")
+player_sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_orq67")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -2)
-texture = ExtResource("4_es1fv")
-region_enabled = true
-region_rect = Rect2(0, 0, 24, 24)
+sprite_frames = ExtResource("6_n74p6")
+animation = &"walk"

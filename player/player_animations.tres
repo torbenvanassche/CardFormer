@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://x8515x0hvs6"]
+
+[ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="1_ph81k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci0to"]
+atlas = ExtResource("1_ph81k")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cluq1"]
+atlas = ExtResource("1_ph81k")
+region = Rect2(25, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci0to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cluq1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var player_sprite: AnimatedSprite2D;
+
 @export var speed = 150.0
 @export var jump_velocity = -300.0
 
@@ -21,8 +23,13 @@ func _physics_process(delta):
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * speed
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		
+	if direction != 0:
+		player_sprite.flip_h = direction > 0;
+		player_sprite.play("walk")
+	else:
+		player_sprite.stop()
 
 	move_and_slide()
