@@ -28,4 +28,3 @@ func _unhandled_input(_event):
 	
 	if Input.is_action_just_pressed("cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_viewport().warp_mouse(mouse_position)

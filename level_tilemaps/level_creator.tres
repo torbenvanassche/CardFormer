@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b3dtn7fk4thvk"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://b3dtn7fk4thvk"]
 
 [ext_resource type="Texture2D" uid="uid://hkqi10ybb3n8" path="res://level_tilemaps/import/tilemap_food.png" id="1_swgb6"]
 [ext_resource type="Texture2D" uid="uid://diuunk4pa7e0o" path="res://level_tilemaps/import/tilemap_industrial.png" id="2_i1pes"]
 [ext_resource type="Texture2D" uid="uid://cancoqoukdd4o" path="res://level_tilemaps/import/tilemap-backgrounds.png" id="3_j5m5s"]
 [ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="4_s0gbc"]
+[ext_resource type="Script" path="res://level_tilemaps/lever.gd" id="5_sjcyx"]
 [ext_resource type="Texture2D" uid="uid://ko6kjk1cymt3" path="res://level_tilemaps/import/tilemap_base.png" id="5_vmh5s"]
 [ext_resource type="Texture2D" uid="uid://bt2cvetbqp5ln" path="res://level_tilemaps/import/tilemap_farm.png" id="6_40mj0"]
 
@@ -1052,15 +1053,18 @@ texture_region_size = Vector2i(18, 18)
 3:3/0 = 0
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/animation_columns = 3
 4:3/0 = 0
 4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0/custom_data_0 = ExtResource("5_sjcyx")
 5:3/0 = 0
 5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:3/0/physics_layer_0/angular_velocity = 0.0
 6:3/0 = 0
 6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:3/0/physics_layer_0/angular_velocity = 0.0
+6:3/0/custom_data_0 = ExtResource("5_sjcyx")
 7:3/0 = 0
 7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:3/0/physics_layer_0/angular_velocity = 0.0
@@ -1745,6 +1749,10 @@ texture_region_size = Vector2i(18, 18)
 [resource]
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "interaction"
+custom_data_layer_0/type = 24
+custom_data_layer_1/name = "trigger"
+custom_data_layer_1/type = 24
 sources/6 = SubResource("TileSetAtlasSource_v5ael")
 sources/7 = SubResource("TileSetAtlasSource_oldaj")
 sources/8 = SubResource("TileSetAtlasSource_382pg")

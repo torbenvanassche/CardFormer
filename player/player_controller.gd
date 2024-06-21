@@ -6,10 +6,9 @@ extends CharacterBody2D
 @export var jump_velocity = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
 
-
-func _physics_process(delta):
+func _physics_process(delta):	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -32,4 +31,18 @@ func _physics_process(delta):
 	else:
 		player_sprite.stop()
 
+	handle_trigger();
+	handle_interactable()
 	move_and_slide()
+	
+func handle_trigger():
+	# Handle interactions
+	var tile_data: Script = Manager.instance.get_custom_data_at(position, "trigger")
+	if tile_data != null:
+		Manager.instance.on_tilemap_interaction.emit(Manager.instance.get_tile_position(position), tile_data)
+
+func handle_interactable():
+	# Handle interactions
+	var tile_data: Script = Manager.instance.get_custom_data_at(position, "interaction")
+	if tile_data != null && Input.is_action_just_pressed("interact"):
+		Manager.instance.on_tilemap_interaction.emit(Manager.instance.get_tile_position(position), tile_data)
