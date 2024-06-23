@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://8mabj8ivkery"]
+
+[ext_resource type="Texture2D" uid="uid://qfr783pjyfyd" path="res://ui/card_container.png" id="1_6om1a"]
+[ext_resource type="Script" path="res://cards/scripts/gui_controller.gd" id="1_xow37"]
+[ext_resource type="PackedScene" uid="uid://u174e626pg4g" path="res://cards/scenes/card_ui.tscn" id="2_bgt1r"]
+
+[sub_resource type="Theme" id="Theme_n836v"]
+NinePatchRect/colors/background_color = Color(0.227451, 0.227451, 0.227451, 0.556863)
+
+[node name="user_interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -760.889
+offset_bottom = -428.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xow37")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.654902)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -84.0
+offset_right = 316.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme = SubResource("Theme_n836v")
+texture = ExtResource("1_6om1a")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.5
+offset_right = 2.0
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+layout_mode = 2
+
+[node name="Button2" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+layout_mode = 2
+
+[node name="Button3" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+layout_mode = 2
+
+[node name="Button4" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+layout_mode = 2
+
+[node name="Button5" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+layout_mode = 2

@@ -1,14 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://o5hk4ycslrdp"]
+[gd_scene load_steps=3 format=3 uid="uid://o5hk4ycslrdp"]
 
-[ext_resource type="PackedScene" uid="uid://c40gn7uc45dch" path="res://scenes/main_menu.tscn" id="1_7cum0"]
+[ext_resource type="PackedScene" uid="uid://juw7ny6olbq7" path="res://scenes/game_scene.tscn" id="2_indt6"]
+[ext_resource type="PackedScene" uid="uid://8mabj8ivkery" path="res://scenes/user_interface.tscn" id="2_oltkr"]
 
-[node name="main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="main" type="Node"]
 
-[node name="main_menu" parent="." instance=ExtResource("1_7cum0")]
-layout_mode = 1
+[node name="game_scene" parent="." instance=ExtResource("2_indt6")]
+position = Vector2(192, 108)
+
+[node name="user_interface" parent="." instance=ExtResource("2_oltkr")]

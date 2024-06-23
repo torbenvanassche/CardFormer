@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://u174e626pg4g"]
+
+[ext_resource type="Texture2D" uid="uid://dv1shsjk5uklh" path="res://cards/import/card_outline.png" id="1_it0ms"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j0ycv"]
+load_path = "res://.godot/imported/card_types.png-25f4941c8c90fcb5b06046ca339006f5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ptcc"]
+atlas = SubResource("CompressedTexture2D_j0ycv")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlr80"]
+bg_color = Color(0.490196, 0.490196, 0.490196, 0.490196)
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(50, 50)
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="ability_card1" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+texture = ExtResource("1_it0ms")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_1ptcc")
+
+[node name="cooldown_overlay" type="ProgressBar" parent="Sprite2D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_tlr80")
+max_value = 1.0
+fill_mode = 3
+show_percentage = false

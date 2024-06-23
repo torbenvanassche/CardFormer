@@ -4,7 +4,9 @@ extends Sprite2D
 @export_file("*.json") var dictionary_path: String;
 @onready var _emotes: Array = FileUtils.load_json(dictionary_path);
 var timer: Timer = Timer.new();
-@export var emote_time: float = 1
+
+@export var emote_time: float = 1;
+@export var child_sprite: Sprite2D;
 
 func _ready():
 	timer.timeout.connect(set_emote)
@@ -20,13 +22,15 @@ func get_emote_by_id(id: String):
 	if results.size() != 0:
 		return results[0];
 	else:
-		printerr(id + " was not found in the emote array.")
+		Manager.debug_err(id + " was not found in the emote array.")
 		return null;
 
-func set_emote(f: int = -1):
+func set_emote(f: int = -1, remove_on_timer: bool = false):
 	if f == -1:
 		create_tween().tween_property(self, "scale", Vector2(), 0.1).set_ease(Tween.EASE_IN)
 		return;
 	self.frame = f;
 	create_tween().tween_property(self, "scale", Vector2(1, 1), 0.1).set_ease(Tween.EASE_IN)
-	timer.start();
+	
+	if remove_on_timer:
+		timer.start();

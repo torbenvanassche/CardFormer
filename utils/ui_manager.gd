@@ -15,9 +15,9 @@ func _ready():
 		
 func add_window(n: String, control: Control):
 	if n == "":
-		printerr("There is no name defined for " + control.name)
+		Manager.debug_err("There is no name defined for " + control.name)
 	if(window_data.has(n)):
-		printerr(n + " already exists in the ui manager.")
+		Manager.debug_log(n + " already exists in the ui manager.")
 		return;
 	window_data[n] = control;
 	control.visible = false;
@@ -44,7 +44,7 @@ func get_subwindow(s: String) -> Node:
 		return window_data[s];
 	else: 
 		if Manager.debug:
-			printerr("The provided key: " + s +  " does not have an associated window.")
+			Manager.debug_err("The provided key: " + s +  " does not have an associated window.")
 		return null;
 
 func enable_ui(to_enable: Node, add_to_undo_stack: bool = true, options: Dictionary = {}):

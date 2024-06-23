@@ -33,3 +33,15 @@ func get_custom_data_at(position: Vector2, custom_data_name: String) -> Variant:
 	if data:
 		return data.get_custom_data(custom_data_name)
 	return null;
+
+static func debug_log(s: String):
+	if debug:
+		print(s);
+		
+static func debug_warn(s: String):
+	if debug:
+		push_warning(s);
+		
+static func debug_err(s: String):
+	if debug:
+		printerr(s);
