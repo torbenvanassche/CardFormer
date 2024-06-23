@@ -1,6 +1,4 @@
-extends Area2D
-
-@export var listen_to: Interactable;
+extends Triggerable
 
 func _ready():
 	listen_to.on_state_changed.connect(_change_visibility)

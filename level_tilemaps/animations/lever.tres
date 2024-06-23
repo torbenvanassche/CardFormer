@@ -2,29 +2,29 @@
 
 [ext_resource type="Texture2D" uid="uid://ko6kjk1cymt3" path="res://level_tilemaps/import/tilemap_base.png" id="1_xu7nn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef2hj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr0bp"]
 atlas = ExtResource("1_xu7nn")
-region = Rect2(76, 57, 18, 18)
+region = Rect2(72, 54, 18, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_visks"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx73y"]
 atlas = ExtResource("1_xu7nn")
-region = Rect2(95, 57, 18, 18)
+region = Rect2(90, 54, 18, 18)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvnus"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhy0b"]
 atlas = ExtResource("1_xu7nn")
-region = Rect2(114, 57, 18, 18)
+region = Rect2(108, 54, 18, 18)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ef2hj")
+"texture": SubResource("AtlasTexture_rr0bp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_visks")
+"texture": SubResource("AtlasTexture_hx73y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xvnus")
+"texture": SubResource("AtlasTexture_hhy0b")
 }],
 "loop": false,
 "name": &"turn_on",

@@ -49,6 +49,9 @@ func interact():
 		return position.distance_squared_to(a.position) > position.distance_squared_to(b.position))
 	if current_triggers.size() != 0 and current_triggers[0].has_method("execute"):
 		current_triggers[0].execute();
+		
+func attack():
+	pass
 
 func _on_enter(body: Node2D):
 	if body != Manager.instance.player:

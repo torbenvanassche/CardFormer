@@ -1,11 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4qhbrrj8p7h0"]
+[gd_scene load_steps=9 format=3 uid="uid://b4qhbrrj8p7h0"]
 
 [ext_resource type="Texture2D" uid="uid://pqu8udx8geff" path="res://cards/import/card_empty.png" id="1_lwbyj"]
 [ext_resource type="Texture2D" uid="uid://ixdar4d18coq" path="res://cards/import/card_types.png" id="2_6i7ts"]
 [ext_resource type="Script" path="res://cards/scripts/card_controller.gd" id="2_hnus5"]
+[ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_varfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhhrf"]
 size = Vector2(20, 29)
+
+[sub_resource type="Animation" id="Animation_y0xxe"]
+resource_name = "move_arrow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wlboh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy5es"]
+_data = {
+"RESET": SubResource("Animation_wlboh"),
+"move_arrow": SubResource("Animation_y0xxe")
+}
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("2_hnus5")
@@ -21,3 +59,18 @@ texture = ExtResource("1_lwbyj")
 [node name="Sprite2D" type="Sprite2D" parent="card"]
 texture = ExtResource("2_6i7ts")
 hframes = 10
+
+[node name="indicator" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("4_varfb")
+offset = Vector2(0, -18)
+flip_v = true
+hframes = 34
+vframes = 24
+frame = 570
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_cy5es")
+}
+autoplay = "move_arrow"

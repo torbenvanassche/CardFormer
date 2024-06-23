@@ -854,7 +854,6 @@ texture_region_size = Vector2i(24, 24)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_382pg"]
 texture = ExtResource("5_vmh5s")
-separation = Vector2i(1, 1)
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
