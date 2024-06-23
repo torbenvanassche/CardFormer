@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3tcbtpypp3xo"]
+
+[ext_resource type="Texture2D" uid="uid://ko6kjk1cymt3" path="res://level_tilemaps/import/tilemap_base.png" id="1_0cfp6"]
+[ext_resource type="Script" path="res://level_tilemaps/scripts/change_visibility.gd" id="1_tvvt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oadj1"]
+size = Vector2(18, 18)
+
+[node name="sign" type="Area2D"]
+script = ExtResource("1_tvvt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oadj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_0cfp6")
+hframes = 20
+vframes = 9
+frame = 86

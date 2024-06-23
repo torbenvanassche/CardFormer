@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://u174e626pg4g"]
+[gd_scene load_steps=6 format=3 uid="uid://u174e626pg4g"]
 
 [ext_resource type="Texture2D" uid="uid://dv1shsjk5uklh" path="res://cards/import/card_outline.png" id="1_it0ms"]
 
@@ -9,8 +9,11 @@ load_path = "res://.godot/imported/card_types.png-25f4941c8c90fcb5b06046ca339006
 atlas = SubResource("CompressedTexture2D_j0ycv")
 region = Rect2(0, 0, 18, 18)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlr80"]
-bg_color = Color(0.490196, 0.490196, 0.490196, 0.490196)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdat"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xfn1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.478431)
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(50, 50)
@@ -56,7 +59,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_tlr80")
+theme_override_styles/background = SubResource("StyleBoxFlat_rqdat")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8xfn1")
 max_value = 1.0
 fill_mode = 3
 show_percentage = false

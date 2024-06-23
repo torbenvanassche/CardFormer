@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=16 format=3 uid="uid://juw7ny6olbq7"]
 
 [ext_resource type="Script" path="res://utils/game_manager.gd" id="1_h4yfy"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="4_56i5u"]
 [ext_resource type="PackedScene" uid="uid://p42vuai7yx3" path="res://level_tilemaps/scenes/lever.tscn" id="5_ubcua"]
 [ext_resource type="PackedScene" uid="uid://b4qhbrrj8p7h0" path="res://cards/scenes/card.tscn" id="6_11i2g"]
-[ext_resource type="Script" path="res://cards/card_functions/attack_card.gd" id="7_ddbhh"]
+[ext_resource type="Script" path="res://cards/card_functions/interact_card.gd" id="7_cimt4"]
 [ext_resource type="Script" path="res://cards/card_functions/jump_card.gd" id="7_yd6oa"]
 [ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="8_e8oy1"]
+[ext_resource type="PackedScene" uid="uid://d3tcbtpypp3xo" path="res://level_tilemaps/scenes/sign.tscn" id="11_a034g"]
+[ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/flying_enemy.tscn" id="12_oju7q"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -21,9 +23,9 @@ master_volume = 1.0
 [sub_resource type="Resource" id="Resource_eyyoj"]
 script = ExtResource("8_e8oy1")
 sprite_frame = 0
-exec_script = ExtResource("7_ddbhh")
-cooldown = 1.0
-type = "attack"
+exec_script = ExtResource("7_cimt4")
+cooldown = 0.0
+type = "interact"
 
 [sub_resource type="Resource" id="Resource_ngusv"]
 script = ExtResource("8_e8oy1")
@@ -53,14 +55,21 @@ layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536
 [node name="lever" parent="TileMap" instance=ExtResource("5_ubcua")]
 position = Vector2(-151, 11)
 
-[node name="card" parent="TileMap" instance=ExtResource("6_11i2g")]
+[node name="card_interact" parent="TileMap" instance=ExtResource("6_11i2g")]
 position = Vector2(-153, -54)
 card_data = SubResource("Resource_eyyoj")
 
-[node name="card2" parent="TileMap" instance=ExtResource("6_11i2g")]
-position = Vector2(31, 0)
+[node name="card_jump" parent="TileMap" instance=ExtResource("6_11i2g")]
+position = Vector2(-42, 0)
 card_data = SubResource("Resource_ngusv")
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]
-speed = 150.0
+position = Vector2(-92, 7)
 jump_velocity = -350.0
+
+[node name="sign" parent="." node_paths=PackedStringArray("listen_to") instance=ExtResource("11_a034g")]
+position = Vector2(27, 11)
+listen_to = NodePath("../TileMap/lever")
+
+[node name="Node2D" parent="." instance=ExtResource("12_oju7q")]
+position = Vector2(0, -47)

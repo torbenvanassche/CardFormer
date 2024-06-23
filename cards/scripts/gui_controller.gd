@@ -4,7 +4,7 @@ extends Node
 static var instance: GUI;
 
 var ability_slots: Array[Control];
-@onready var ability_parent: Control = $CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer;
+@onready var ability_parent: Control = $CanvasLayer/cards_ui/MarginContainer/HBoxContainer;
 
 func _ready():
 	GUI.instance = self;
@@ -32,6 +32,9 @@ func try_use_ability(ability: String) -> Control:
 		return filtered[0];
 	else:
 		return null;
+		
+func has_ability(ability: String):
+	return ability_slots.any(func(x: Button): return x.get_script() != null and x.card_data.type == ability);
 
 func trigger_click(button: Button):
 	var press = InputEventMouseButton.new()

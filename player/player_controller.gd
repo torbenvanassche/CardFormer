@@ -38,15 +38,17 @@ func _physics_process(delta):
 		player_sprite.stop()
 		
 	if Input.is_action_just_pressed("interact") && current_triggers.size() != 0:
-		var player: PlayerController = Manager.instance.player;
-		current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
-			return player.position.distance_squared_to(a.position) > player.position.distance_squared_to(b.position))
-		if current_triggers[0].has_method("execute"):
-			current_triggers[0].execute();
+		interact();
 	move_and_slide()
 	
 func jump():
 	velocity.y = jump_velocity
+	
+func interact():
+	current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
+		return position.distance_squared_to(a.position) > position.distance_squared_to(b.position))
+	if current_triggers.size() != 0 and current_triggers[0].has_method("execute"):
+		current_triggers[0].execute();
 
 func _on_enter(body: Node2D):
 	if body != Manager.instance.player:

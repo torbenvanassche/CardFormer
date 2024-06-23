@@ -21,7 +21,7 @@ script = ExtResource("1_xow37")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+[node name="cards_ui" type="NinePatchRect" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 1, 0.654902)
 anchors_preset = 2
 anchor_top = 1.0
@@ -39,7 +39,7 @@ patch_margin_top = 13
 patch_margin_right = 13
 patch_margin_bottom = 13
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/cards_ui"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,21 +54,21 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/cards_ui/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Button" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+[node name="Button" parent="CanvasLayer/cards_ui/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
 layout_mode = 2
 
-[node name="Button2" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+[node name="Button2" parent="CanvasLayer/cards_ui/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
 layout_mode = 2
 
-[node name="Button3" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+[node name="Button3" parent="CanvasLayer/cards_ui/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
 layout_mode = 2
 
-[node name="Button4" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+[node name="Button4" parent="CanvasLayer/cards_ui/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
 layout_mode = 2
 
-[node name="Button5" parent="CanvasLayer/NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
+[node name="Button5" parent="CanvasLayer/cards_ui/MarginContainer/HBoxContainer" instance=ExtResource("2_bgt1r")]
 layout_mode = 2

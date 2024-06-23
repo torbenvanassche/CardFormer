@@ -25,7 +25,7 @@ func get_emote_by_id(id: String):
 		Manager.debug_err(id + " was not found in the emote array.")
 		return null;
 
-func set_emote(f: int = -1, remove_on_timer: bool = false):
+func set_emote(f: int = -1, remove_on_timer: bool = true):
 	if f == -1:
 		create_tween().tween_property(self, "scale", Vector2(), 0.1).set_ease(Tween.EASE_IN)
 		return;

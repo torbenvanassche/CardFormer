@@ -30,8 +30,11 @@ func on_enter():
 		
 	internal_sprite.visible = true;
 	(internal_sprite.texture as AtlasTexture).region = Rect2(18 * card_data.sprite_frame, 0, 18, 18)
-	cooldown_overlay.max_value = card_data.cooldown;
-	cooldown_timer.wait_time = card_data.cooldown;	
+	if card_data.cooldown > 0:
+		cooldown_timer.wait_time = card_data.cooldown;
+		cooldown_overlay.max_value = card_data.cooldown;
+	else:
+		cooldown_overlay.visible = false;
 	set_process(true)
 	
 func _reset_ability():
@@ -44,7 +47,8 @@ func _execute():
 	if !cooldown_timer.is_stopped():
 		return;
 	
-	cooldown_timer.start();
+	if card_data.cooldown > 0:
+		cooldown_timer.start();
 	execute();
 
 func execute():

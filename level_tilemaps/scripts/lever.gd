@@ -1,6 +1,4 @@
-extends Area2D
-
-var is_on: bool = false;
+extends Interactable
 
 @onready var animated_sprite: AnimatedSprite2D = $lever;
 @onready var last_frame: int = animated_sprite.sprite_frames.get_frame_count("turn_on") - 1;
@@ -12,8 +10,14 @@ func _ready():
 	
 func _set_lever_state():
 	is_on = animated_sprite.frame == last_frame;
+	on_state_changed.emit(is_on);
 	
 func execute():
+	if !GUI.instance.has_ability("interact"):
+		var emote = Manager.instance.player.emote_handler.get_emote_by_id("CROSS")
+		Manager.instance.player.emote_handler.set_emote(emote.frame)
+		return
+	
 	if animated_sprite.is_playing():
 		return;
 	
