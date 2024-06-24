@@ -38,13 +38,15 @@ func _physics_process(delta):
 		player_sprite.stop()
 		
 	if Input.is_action_just_pressed("interact") && current_triggers.size() != 0:
-		interact();
+		if GUI.instance.try_use_ability("interact") == null:
+			var emote = Manager.instance.player.emote_handler.get_emote_by_id("CROSS")
+			Manager.instance.player.emote_handler.set_emote(emote.frame)
 	move_and_slide()
 	
 func jump():
 	velocity.y = jump_velocity
 	
-func interact():
+func interact():	
 	current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
 		return position.distance_squared_to(a.position) > position.distance_squared_to(b.position))
 	if current_triggers.size() != 0 and current_triggers[0].has_method("execute"):

@@ -5,6 +5,7 @@ static var instance: GUI;
 
 var ability_slots: Array[Control];
 @onready var ability_parent: Control = $CanvasLayer/cards_ui/MarginContainer/HBoxContainer;
+@onready var text_box: Printer = $CanvasLayer/text_container/text_box;
 
 func _ready():
 	GUI.instance = self;

@@ -23,6 +23,8 @@ script = ExtResource("8_e8oy1")
 sprite_frame = 0
 exec_script = ExtResource("7_cimt4")
 cooldown = 0.0
+single_use = true
+respawn_after_use = true
 type = "interact"
 
 [node name="game_scene" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
@@ -47,7 +49,8 @@ layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536
 position = Vector2(26, 11)
 
 [node name="card_interact" parent="TileMap" instance=ExtResource("6_11i2g")]
-position = Vector2(-41, 0)
+position = Vector2(-41, 7)
+scale = Vector2(0.5, 0.5)
 card_data = SubResource("Resource_eyyoj")
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]

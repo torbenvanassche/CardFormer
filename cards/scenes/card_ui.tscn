@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dv1shsjk5uklh" path="res://cards/import/card_outline.png" id="1_it0ms"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j0ycv"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihp82"]
 load_path = "res://.godot/imported/card_types.png-25f4941c8c90fcb5b06046ca339006f5.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ptcc"]
-atlas = SubResource("CompressedTexture2D_j0ycv")
+atlas = SubResource("CompressedTexture2D_ihp82")
 region = Rect2(0, 0, 18, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdat"]

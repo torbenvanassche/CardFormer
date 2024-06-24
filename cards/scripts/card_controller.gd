@@ -3,6 +3,8 @@ extends Area2D
 @onready var card_sprite: Sprite2D = $card/Sprite2D;
 @export var card_data: CardData;
 
+@export var show_indicator: bool = false;
+
 func _ready():
 	on_enable.call_deferred()
 
@@ -12,4 +14,8 @@ func on_enable():
 
 func on_enter():
 	Manager.instance.player.deck.add_card(card_data)
-	queue_free()
+	if card_data.respawn_after_use:
+		card_data.set_meta("card", self)
+		visible = false;
+	else:
+		queue_free()

@@ -40,6 +40,12 @@ func on_enter():
 func _reset_ability():
 	cooldown_overlay.value = 0;
 	
+func reset_button():
+	if pressed.is_connected(_execute):
+		pressed.disconnect(_execute)
+	internal_sprite.visible = false
+	set_script(null)
+	
 func _on_enter_local():
 	pass
 
@@ -50,6 +56,11 @@ func _execute():
 	if card_data.cooldown > 0:
 		cooldown_timer.start();
 	execute();
+	
+	if card_data.single_use:
+		if card_data.respawn_after_use and card_data.has_meta("card"):
+			card_data.get_meta("card").visible = true;
+		reset_button()
 
 func execute():
 	Manager.debug_err("Execute is called, but is not implemented!")

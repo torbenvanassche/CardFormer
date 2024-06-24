@@ -14,6 +14,12 @@ static var debug: bool = false;
 var current_save_file: SaveFile;
 var scroll_in_use: bool = false;
 
+func _ready():
+	on_enable.call_deferred()
+	
+func on_enable():
+	GUI.instance.text_box.print("Be careful, most cards only have limited uses!")
+
 func _enter_tree():
 	print("Debug mode is set to " + str(debug))
 	Manager.instance = self;
