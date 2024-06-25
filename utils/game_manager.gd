@@ -18,7 +18,7 @@ func _ready():
 	on_enable.call_deferred()
 	
 func on_enable():
-	GUI.instance.text_box.print("Be careful, most cards only have limited uses!")
+	GUI.instance.text_box.print("Be careful, most cards only have limited uses!") 
 
 func _enter_tree():
 	print("Debug mode is set to " + str(debug))

@@ -33,6 +33,7 @@ tilemap = NodePath("TileMap")
 player = NodePath("Character")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(-105, 5)
 zoom = Vector2(3, 3)
 script = ExtResource("2_hjqft")
 target = NodePath("../Character")
@@ -55,6 +56,7 @@ card_data = SubResource("Resource_eyyoj")
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]
 position = Vector2(-105, 8)
+speed = 160.0
 jump_velocity = -350.0
 
 [node name="Area2D" parent="." node_paths=PackedStringArray("listen_to") instance=ExtResource("10_kx4ye")]

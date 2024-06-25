@@ -59,7 +59,9 @@ func _execute():
 	
 	if card_data.single_use:
 		if card_data.respawn_after_use and card_data.has_meta("card"):
-			card_data.get_meta("card").visible = true;
+			var card_meta: Node = card_data.get_meta("card");
+			if card_meta.has_method("on_enable"):
+				card_meta.on_enable();
 		reset_button()
 
 func execute():

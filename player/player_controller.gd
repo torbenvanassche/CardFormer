@@ -1,14 +1,21 @@
 class_name PlayerController
 extends CharacterBody2D
 
+#Player data stuff
 @export var player_sprite: AnimatedSprite2D;
 @export var player_trigger: Area2D;
 @export var emote_handler: EmoteHandler;
 @export var speed: float = 150.0
-@export var jump_velocity: float = -300.0
 var deck: Deck = Deck.new();
 
+#collision management
 var current_triggers: Array[Node2D];
+
+#jump parameters
+@export var jump_velocity: float = -300.0
+var jump_grace_period: float = 0.1;
+var current_jump_timer: float = 0;
+var jump_pressed_not_on_ground: bool = false;
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
@@ -22,7 +29,16 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			GUI.instance.try_use_ability("jump");
+		else:
+			jump_pressed_not_on_ground = true;
+	
+	if jump_pressed_not_on_ground:
+		current_jump_timer += delta;
+		
+	if is_on_floor() and current_jump_timer < jump_grace_period and jump_pressed_not_on_ground:
 		GUI.instance.try_use_ability("jump");
 
 	var direction = Input.get_axis("left", "right")
@@ -45,6 +61,8 @@ func _physics_process(delta):
 	
 func jump():
 	velocity.y = jump_velocity
+	jump_pressed_not_on_ground = false;
+	current_jump_timer = 0;
 	
 func interact():	
 	current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
