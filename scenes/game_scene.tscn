@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=12 format=3 uid="uid://juw7ny6olbq7"]
 
 [ext_resource type="Script" path="res://utils/game_manager.gd" id="1_h4yfy"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
 [ext_resource type="Script" path="res://utils/camera.gd" id="2_hjqft"]
 [ext_resource type="Script" path="res://utils/settings.gd" id="3_ga4kw"]
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="4_56i5u"]
-[ext_resource type="PackedScene" uid="uid://p42vuai7yx3" path="res://level_tilemaps/scenes/lever.tscn" id="5_ubcua"]
 [ext_resource type="PackedScene" uid="uid://b4qhbrrj8p7h0" path="res://cards/scenes/card.tscn" id="6_11i2g"]
-[ext_resource type="Script" path="res://cards/card_functions/interact_card.gd" id="7_cimt4"]
+[ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/flying_enemy.tscn" id="6_x3oua"]
+[ext_resource type="Script" path="res://cards/card_functions/attack_card.gd" id="7_qf354"]
 [ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="8_e8oy1"]
-[ext_resource type="PackedScene" uid="uid://d216mfulxf1jf" path="res://level_tilemaps/scenes/door.tscn" id="10_kx4ye"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -18,14 +17,14 @@ camera_follow_speed = 1
 close_context_on_mouse_exit = true
 master_volume = 1.0
 
-[sub_resource type="Resource" id="Resource_eyyoj"]
+[sub_resource type="Resource" id="Resource_faymy"]
 script = ExtResource("8_e8oy1")
 sprite_frame = 0
-exec_script = ExtResource("7_cimt4")
-cooldown = 0.0
-single_use = true
-respawn_after_use = true
-type = "interact"
+exec_script = ExtResource("7_qf354")
+cooldown = 1.0
+single_use = false
+respawn_after_use = false
+type = "attack"
 
 [node name="game_scene" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
 script = ExtResource("1_h4yfy")
@@ -44,21 +43,16 @@ settings_profile = SubResource("Resource_glrhp")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_8lwmk")
 format = 2
-layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 131080, 0, 65536, 131080, 0, 65537, 131080, 0, 131069, 131080, 0, 65538, 131080, 0, 131066, 131080, 0, 131065, 65544, 0, 131067, 131080, 0, 131068, 131080, 0, 65539, 131080, 0, 65540, 131080, 0, 65541, 131080, 0, 65542, 196616, 0)
-
-[node name="lever" parent="TileMap" instance=ExtResource("5_ubcua")]
-position = Vector2(26, 11)
-
-[node name="card_interact" parent="TileMap" instance=ExtResource("6_11i2g")]
-position = Vector2(-41, 7)
-scale = Vector2(0.5, 0.5)
-card_data = SubResource("Resource_eyyoj")
+layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 196616, 0, 131069, 131080, 0, 131066, 131080, 0, 131065, 65544, 0, 131067, 131080, 0, 131068, 131080, 0, -65536, 65544, 1, -65535, 196616, 1, 65536, 65544, 7, 1, 196616, 6, 65537, 196616, 7, -196614, 524296, 2, -196613, 589832, 2, -196612, 655368, 2, 65531, 524296, 4, 0, 65544, 6)
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]
 position = Vector2(-105, 8)
 speed = 160.0
 jump_velocity = -350.0
 
-[node name="Area2D" parent="." node_paths=PackedStringArray("listen_to") instance=ExtResource("10_kx4ye")]
-position = Vector2(96, 11)
-listen_to = NodePath("../TileMap/lever")
+[node name="flying_enemy" parent="." instance=ExtResource("6_x3oua")]
+position = Vector2(-83, -131)
+
+[node name="card" parent="." instance=ExtResource("6_11i2g")]
+position = Vector2(18, -39)
+card_data = SubResource("Resource_faymy")

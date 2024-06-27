@@ -31,7 +31,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			GUI.instance.try_use_ability("jump");
+			jump()
 		else:
 			jump_pressed_not_on_ground = true;
 	
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		current_jump_timer += delta;
 		
 	if is_on_floor() and current_jump_timer < jump_grace_period and jump_pressed_not_on_ground:
-		GUI.instance.try_use_ability("jump");
+		jump();
 
 	var direction = Input.get_axis("left", "right")
 	if direction:
@@ -54,9 +54,7 @@ func _physics_process(delta):
 		player_sprite.stop()
 		
 	if Input.is_action_just_pressed("interact") && current_triggers.size() != 0:
-		if GUI.instance.try_use_ability("interact") == null:
-			var emote = Manager.instance.player.emote_handler.get_emote_by_id("CROSS")
-			Manager.instance.player.emote_handler.set_emote(emote.frame)
+		interact();
 	move_and_slide()
 	
 func jump():

@@ -5,6 +5,9 @@ var internal_sprite: TextureRect;
 var cooldown_overlay: ProgressBar;
 var cooldown_timer: Timer;
 
+@export var is_front: bool = true;
+signal card_flipped(is_front: bool)
+
 @export var card_data: CardData;
 	
 func _process(_delta):
@@ -40,6 +43,12 @@ func on_enter():
 func _reset_ability():
 	cooldown_overlay.value = 0;
 	
+func _gui_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			is_front = !is_front;
+			card_flipped.emit(is_front);
+	
 func reset_button():
 	if pressed.is_connected(_execute):
 		pressed.disconnect(_execute)
@@ -55,7 +64,8 @@ func _execute():
 	
 	if card_data.cooldown > 0:
 		cooldown_timer.start();
-	execute();
+	
+	execute_front() if is_front else execute_back()
 	
 	if card_data.single_use:
 		if card_data.respawn_after_use and card_data.has_meta("card"):
@@ -64,5 +74,8 @@ func _execute():
 				card_meta.on_enable();
 		reset_button()
 
-func execute():
-	Manager.debug_err("Execute is called, but is not implemented!")
+func execute_front():
+	Manager.debug_err("Execute is called on front, but is not implemented!")
+	
+func execute_back():
+	Manager.debug_err("Execute is called on back, but is not implemented!")
