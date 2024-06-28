@@ -1,4 +1,4 @@
-extends CardBase
+extends Card
 
 func execute_front():
 	print("front")

@@ -1,21 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsliqk4ja0rgt"]
+[gd_scene load_steps=8 format=3 uid="uid://bsliqk4ja0rgt"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_ptweb"]
 [ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="2_mbac0"]
 [ext_resource type="Texture2D" uid="uid://buoqt562jxbyr" path="res://emote_handler/emotes_pixel_style.png" id="3_teyap"]
 [ext_resource type="Script" path="res://emote_handler/emote_handler.gd" id="4_i5um0"]
+[ext_resource type="Script" path="res://cards/scripts/hand.gd" id="5_sn3a2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
 size = Vector2(20, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy73q"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "player_trigger", "emote_handler")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("player_sprite", "player_trigger", "emote_handler", "hand")]
 position = Vector2(-19, 7)
 script = ExtResource("1_ptweb")
 player_sprite = NodePath("AnimatedSprite2D")
 player_trigger = NodePath("Area2D")
 emote_handler = NodePath("Emote")
+hand = NodePath("Hand")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
@@ -38,3 +40,6 @@ hframes = 10
 vframes = 3
 script = ExtResource("4_i5um0")
 dictionary_path = "res://emote_handler/emotes_lookup.json"
+
+[node name="Hand" type="Node" parent="."]
+script = ExtResource("5_sn3a2")

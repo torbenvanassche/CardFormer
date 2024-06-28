@@ -14,7 +14,8 @@ func on_enable():
 		card_sprite.frame = card_data.sprite_frame;
 
 func on_enter():
-	Manager.instance.player.deck.add_card(card_data)
+	var card: Card = Card.new(card_data);
+	Manager.instance.player.deck.add_card(card)
 	if card_data.respawn_after_use:
 		card_data.set_meta("card", self)
 		set_deferred("monitorable", false)

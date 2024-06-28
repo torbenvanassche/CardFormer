@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var emote_handler: EmoteHandler;
 @export var speed: float = 150.0
 var deck: Deck = Deck.new();
+@export var hand: Hand;
 
 #collision management
 var current_triggers: Array[Node2D];

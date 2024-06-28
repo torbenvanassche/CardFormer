@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b4qhbrrj8p7h0"]
 
+[ext_resource type="Script" path="res://cards/scripts/card_pickup.gd" id="1_gbv86"]
 [ext_resource type="Texture2D" uid="uid://pqu8udx8geff" path="res://cards/import/card_empty.png" id="1_lwbyj"]
 [ext_resource type="Texture2D" uid="uid://ixdar4d18coq" path="res://cards/import/card_types.png" id="2_6i7ts"]
-[ext_resource type="Script" path="res://cards/scripts/card_controller.gd" id="2_hnus5"]
 [ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_varfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhhrf"]
@@ -46,7 +46,7 @@ _data = {
 }
 
 [node name="Area2D" type="Area2D"]
-script = ExtResource("2_hnus5")
+script = ExtResource("1_gbv86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
