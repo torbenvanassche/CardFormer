@@ -3,8 +3,6 @@ class_name Manager
 extends Node
 
 static var instance: Manager;
-
-@export var scenes: Array[Node]
 @export var tilemap: TileMap;
 var camera: Camera2D;
 @export var player: PlayerController;

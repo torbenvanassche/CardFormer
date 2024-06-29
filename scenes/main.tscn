@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://o5hk4ycslrdp"]
+[gd_scene load_steps=7 format=3 uid="uid://o5hk4ycslrdp"]
 
-[ext_resource type="PackedScene" uid="uid://juw7ny6olbq7" path="res://scenes/game_scene.tscn" id="2_indt6"]
+[ext_resource type="Script" path="res://utils/scene_manager.gd" id="1_a7a6j"]
+[ext_resource type="PackedScene" uid="uid://juw7ny6olbq7" path="res://scenes/platforming_scene.tscn" id="2_indt6"]
+[ext_resource type="Resource" uid="uid://b8gf4f04f65cf" path="res://scene_infos/battle.tres" id="2_o1frq"]
 [ext_resource type="PackedScene" uid="uid://8mabj8ivkery" path="res://scenes/user_interface.tscn" id="2_oltkr"]
+[ext_resource type="PackedScene" uid="uid://cvjatgyu60w2e" path="res://scenes/battle_scene.tscn" id="3_6fgb5"]
+[ext_resource type="Resource" uid="uid://cverr2kdqgstn" path="res://scene_infos/platforming.tres" id="3_bgbxr"]
 
 [node name="main" type="Node"]
+script = ExtResource("1_a7a6j")
+scenes = Array[Resource("res://utils/scene_info.gd")]([ExtResource("2_o1frq"), ExtResource("3_bgbxr")])
 
-[node name="game_scene" parent="." instance=ExtResource("2_indt6")]
+[node name="platforming_scene" parent="." instance=ExtResource("2_indt6")]
 position = Vector2(192, 108)
 
 [node name="user_interface" parent="." instance=ExtResource("2_oltkr")]
+
+[node name="battle_scene" parent="." instance=ExtResource("3_6fgb5")]
+visible = false

@@ -6,7 +6,7 @@ var cards: Array[Card];
 func add_card(card: Card):
 	var slot: CardUI = GUI.instance.add_to_ui(card);
 	slot.left_click.connect(try_use_ability.bind(card.data.type))
-	slot.right_click.connect(card.flip)
+	slot.right_click.connect(slot.flip)
 	cards.append(card);
 	add_child(card)
 	

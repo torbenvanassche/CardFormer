@@ -12,6 +12,10 @@ extends Button
 		
 var internal_sprite: TextureRect;
 var cooldown_overlay: ProgressBar;
+var card_background: TextureRect;
+
+@onready var card_front: Texture = preload("res://cards/import/card_front.png");
+@onready var card_back: Texture = preload("res://cards/import/card_back.png");
 
 signal left_click();
 signal right_click();
@@ -21,9 +25,11 @@ func _process(_delta):
 		cooldown_overlay.value = card.cooldown_timer.time_left;
 
 func initialize():	
-	cooldown_overlay = $Sprite2D/cooldown_overlay
+	cooldown_overlay = $Sprite2D/cooldown_overlay;
+	card_background = $ability_card;
 	internal_sprite = $Sprite2D;
 	
+	card_background.texture = card_front if card.is_front else card_back;
 	internal_sprite.texture = internal_sprite.texture.duplicate()
 	card.cooldown_timer.timeout.connect(_reset_overlay)
 		
@@ -46,8 +52,12 @@ func _gui_input(event):
 			left_click.emit();
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			right_click.emit();
+			
+func flip():
+	card.flip();
+	card_background.texture = card_front if card.is_front else card_back;
 	
-func destroy():	
+func destroy():
 	card.cooldown_timer.timeout.disconnect(_reset_overlay())
 	internal_sprite.visible = false
 	cooldown_overlay.visible = false;

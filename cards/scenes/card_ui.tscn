@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://u174e626pg4g"]
 
-[ext_resource type="Texture2D" uid="uid://pqu8udx8geff" path="res://cards/import/card_empty.png" id="1_aw8rh"]
 [ext_resource type="Script" path="res://cards/scripts/card_ui_element.gd" id="1_ly78f"]
+[ext_resource type="Texture2D" uid="uid://pqu8udx8geff" path="res://cards/import/card_front.png" id="2_xammx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihp82"]
 load_path = "res://.godot/imported/card_types.png-25f4941c8c90fcb5b06046ca339006f5.ctex"
@@ -24,7 +24,7 @@ mouse_default_cursor_shape = 2
 flat = true
 script = ExtResource("1_ly78f")
 
-[node name="ability_card1" type="TextureRect" parent="."]
+[node name="ability_card" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(51, 50)
 layout_mode = 1
 anchors_preset = 15
@@ -33,7 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-texture = ExtResource("1_aw8rh")
+texture = ExtResource("2_xammx")
 
 [node name="Sprite2D" type="TextureRect" parent="."]
 visible = false
