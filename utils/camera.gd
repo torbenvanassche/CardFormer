@@ -17,7 +17,7 @@ func _process(delta):
 		position = position.lerp(target.position, delta * settings_profile.camera_follow_speed);
 	
 func _unhandled_input(_event):
-	if !UserInterface.instance.is_ui_closed():
+	if !SceneManager.instance.ui_is_open():
 		return;
 		
 	if Input.is_action_just_pressed("zoom_out"):

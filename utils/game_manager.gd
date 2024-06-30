@@ -7,7 +7,7 @@ static var instance: Manager;
 var camera: Camera2D;
 @export var player: PlayerController;
 
-static var debug: bool = false;
+static var debug: bool = true;
 
 var current_save_file: SaveFile;
 var scroll_in_use: bool = false;
@@ -19,11 +19,14 @@ func on_enable():
 	GUI.instance.text_box.print("Be careful, most cards only have limited uses!") 
 
 func _enter_tree():
-	print("Debug mode is set to " + str(debug))
+	if not Manager.debug:
+		print("Debug mode is set to " + str(debug) + ", some messages may not be shown.")
 	Manager.instance = self;
 	
-func pause(pause_game = true):
+func pause(pause_game = !get_tree().paused):
 	get_tree().paused = pause_game
+	if pause_game:
+		SceneManager.instance.set_active_scene("pause");
 	
 func get_tile_position(position: Vector2) -> Vector2:
 	return tilemap.local_to_map(position)

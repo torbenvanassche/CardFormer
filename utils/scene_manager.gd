@@ -67,6 +67,13 @@ func set_active_scene(scene_name: String, remove_active_from_tree: bool = false)
 func to_previous_scene(remove_current: bool = false):
 	var scene_info = active_scene.get_meta("previous_scene_info")
 	active_scene.remove_meta("previous_scene_info")
-	
+
 	if scene_info:
 		set_active_scene(scene_info.id, remove_current);
+		
+func ui_is_open(exceptions: Array[String] = ["pause"]) -> bool:
+	return get_children().all(func(x: Node): return node_to_info(x).is_ui && x.visible && !exceptions.has(node_to_info(x).id));
+
+func _unhandled_input(event):
+	if event.is_action_pressed("cancel") && !ui_is_open():
+		Manager.instance.pause();

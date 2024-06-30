@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_8msxd")
-id = "platforming"
+id = "platformer"
 packed_scene = ExtResource("1_ujkw4")
