@@ -10,7 +10,7 @@ signal scene_exited(scene: Node)
 
 func _ready():
 	SceneManager.instance = self;
-	set_active_scene("main_menu")
+	set_active_scene("main_menu", true, true)
 
 var active_scene: Node:
 	get: return active_scene;
@@ -18,7 +18,6 @@ var active_scene: Node:
 		if !new_scene:
 			return;
 		if active_scene:
-			active_scene.visible = false;
 			scene_exited.emit(active_scene);
 			if active_scene.has_method("on_disable"):
 				active_scene.on_disable();
@@ -52,11 +51,13 @@ func node_to_info(node: Node) -> SceneInfo:
 	Manager.debug_err("Could not find " + node.name + " in scenes.")
 	return null
 		
-func set_active_scene(scene_name: String, remove_active_from_tree: bool = false):
+func set_active_scene(scene_name: String, hide_current_scene: bool, free_current_scene: bool = false):
 	var previous_scene_info: SceneInfo = null;
 	if active_scene:
 		previous_scene_info = node_to_info(active_scene);
-		if remove_active_from_tree:
+		if hide_current_scene:
+			active_scene.visible = false;
+		if free_current_scene:
 			previous_scene_info.node.queue_free() 
 	active_scene = get_or_create_scene(scene_name)
 	if active_scene:
@@ -64,12 +65,14 @@ func set_active_scene(scene_name: String, remove_active_from_tree: bool = false)
 		if active_scene.has_method("on_enable"):
 			active_scene.on_enable()
 		
-func to_previous_scene(remove_current: bool = false):
-	var scene_info = active_scene.get_meta("previous_scene_info")
+func to_previous_scene(hide_current: bool = false, remove_current: bool = false):
+	var scene_info: SceneInfo = active_scene.get_meta("previous_scene_info")
+	if scene_info.id == "pause":
+		Manager.instance.pause();
 	active_scene.remove_meta("previous_scene_info")
 
 	if scene_info:
-		set_active_scene(scene_info.id, remove_current);
+		set_active_scene(scene_info.id, hide_current, remove_current);
 		
 func ui_is_open(exceptions: Array[String] = ["pause"]) -> bool:
 	return get_children().all(func(x: Node): return node_to_info(x).is_ui && x.visible && !exceptions.has(node_to_info(x).id));

@@ -7,6 +7,6 @@ extends Control
 @onready var quit_button: Button = $Buttons/VBoxContainer/quit;
 	
 func _ready():
-	new_game_button.pressed.connect(SceneManager.instance.set_active_scene.bind("platformer", true))
+	new_game_button.pressed.connect(SceneManager.instance.set_active_scene.bind("platformer", true, true))
 	quit_button.pressed.connect(get_tree().quit)
 	pass

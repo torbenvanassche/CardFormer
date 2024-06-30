@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dny1dqcanlco0"]
 
 [ext_resource type="Script" path="res://scenes/scripts/window_base.gd" id="1_6jx1r"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uaqwh"]
-load_path = "res://.godot/imported/cross.png-83fb3b532a3143b6ffa7e8f263d5c5da.ctex"
+[ext_resource type="Texture2D" uid="uid://gc4abi3xu4ye" path="res://icon.svg" id="2_br4fx"]
 
 [node name="Window" type="Control"]
 layout_mode = 3
@@ -52,7 +50,7 @@ text = "WINDOW TITLE"
 [node name="Button" type="Button" parent="VBoxContainer/topbar/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-icon = SubResource("CompressedTexture2D_uaqwh")
+icon = ExtResource("2_br4fx")
 flat = true
 icon_alignment = 1
 expand_icon = true

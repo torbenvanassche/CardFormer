@@ -26,7 +26,7 @@ func _enter_tree():
 func pause(pause_game = !get_tree().paused):
 	get_tree().paused = pause_game
 	if pause_game:
-		SceneManager.instance.set_active_scene("pause");
+		SceneManager.instance.set_active_scene("pause", true);
 	
 func get_tile_position(position: Vector2) -> Vector2:
 	return tilemap.local_to_map(position)
