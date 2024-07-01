@@ -51,7 +51,7 @@ func node_to_info(node: Node) -> SceneInfo:
 	Manager.debug_err("Could not find " + node.name + " in scenes.")
 	return null
 		
-func set_active_scene(scene_name: String, hide_current_scene: bool, free_current_scene: bool = false):
+func set_active_scene(scene_name: String, hide_current_scene: bool, free_current_scene: bool = false) -> Node:
 	var previous_scene_info: SceneInfo = null;
 	if active_scene:
 		previous_scene_info = node_to_info(active_scene);
@@ -64,6 +64,7 @@ func set_active_scene(scene_name: String, hide_current_scene: bool, free_current
 		active_scene.set_meta("previous_scene_info", previous_scene_info)
 		if active_scene.has_method("on_enable"):
 			active_scene.on_enable()
+	return active_scene;
 		
 func to_previous_scene(hide_current: bool = false, remove_current: bool = false):
 	var scene_info: SceneInfo = active_scene.get_meta("previous_scene_info")

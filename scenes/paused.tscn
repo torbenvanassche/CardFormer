@@ -5,9 +5,6 @@
 
 [node name="Window" node_paths=PackedStringArray("to_enable") instance=ExtResource("1_v7d3o")]
 process_mode = 2
-offset_right = -576.0
-offset_bottom = -324.0
-id = "PAUSE"
 display_mode = "none"
 to_enable = [NodePath("VBoxContainer/content/VBoxContainer")]
 

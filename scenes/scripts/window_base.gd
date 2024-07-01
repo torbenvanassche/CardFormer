@@ -1,8 +1,6 @@
 class_name DraggableControl
 extends Control
 
-@export var id: String = "";
-
 @onready var vp := get_viewport()
 @onready var top_bar: ColorRect = $VBoxContainer/topbar;
 @onready var close_button: Button = $VBoxContainer/topbar/HBoxContainer/Button;
@@ -77,6 +75,8 @@ func on_enable(options: Dictionary = {}):
 	
 	if store_position:
 		position = stored_position;
+		
+	print(position, size)
 
 func _change_title(s: String):
 	title.text = s;

@@ -7,6 +7,21 @@
 atlas = ExtResource("2_qpqh6")
 region = Rect2(420.105, 260.104, 7.97272, 7.70245)
 
+[sub_resource type="Animation" id="Animation_f3w2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1062, 50)]
+}
+
 [sub_resource type="Animation" id="Animation_5yvxt"]
 resource_name = "move_up_down"
 loop_mode = 1
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [50.0, 45.0]
-}
-
-[sub_resource type="Animation" id="Animation_f3w2q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1062, 50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrn7f"]
@@ -67,10 +67,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -50.0
-offset_right = -25.0
-offset_bottom = -25.0
+offset_left = 1062.0
+offset_top = 50.0
+offset_right = 1087.0
+offset_bottom = 75.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
