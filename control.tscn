@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dmp0ci7nn0mdp"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0

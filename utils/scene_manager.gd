@@ -57,7 +57,7 @@ func set_active_scene(scene_name: String, hide_current_scene: bool, free_current
 		previous_scene_info = node_to_info(active_scene);
 		if hide_current_scene:
 			active_scene.visible = false;
-		if free_current_scene:
+		if free_current_scene: 
 			previous_scene_info.node.queue_free() 
 	active_scene = get_or_create_scene(scene_name)
 	if active_scene:
@@ -68,8 +68,6 @@ func set_active_scene(scene_name: String, hide_current_scene: bool, free_current
 		
 func to_previous_scene(hide_current: bool = false, remove_current: bool = false):
 	var scene_info: SceneInfo = active_scene.get_meta("previous_scene_info")
-	if scene_info.id == "pause":
-		Manager.instance.pause();
 	active_scene.remove_meta("previous_scene_info")
 
 	if scene_info:

@@ -4,17 +4,10 @@
 [ext_resource type="Script" path="res://scenes/scripts/main_menu.gd" id="1_rmu8i"]
 [ext_resource type="Texture2D" uid="uid://dge8wrttgtncr" path="res://ui/ph--globe.svg" id="2_xas7j"]
 
-[node name="main_menu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="main_menu" type="CanvasLayer"]
 script = ExtResource("1_rmu8i")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +16,6 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0.12549)
 
 [node name="Buttons" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +50,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dny1dqcanlco0" path="res://scenes/base_window.tscn" id="1_v7d3o"]
 [ext_resource type="Script" path="res://scenes/scripts/pause_menu.gd" id="2_emtrc"]
 
-[node name="Window" node_paths=PackedStringArray("sub_elements") instance=ExtResource("1_v7d3o")]
+[node name="Window" instance=ExtResource("1_v7d3o")]
 process_mode = 2
 display_mode = "none"
-sub_elements = [NodePath("Window/VBoxContainer/content/VBoxContainer")]
 
 [node name="Window" parent="." index="0"]
 offset_right = -576.0

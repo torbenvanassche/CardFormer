@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var new_game_button: Button = $Buttons/VBoxContainer/new_game;
 @onready var load_game_button: Button = $Buttons/VBoxContainer/load_game;
