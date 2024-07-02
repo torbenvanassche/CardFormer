@@ -14,6 +14,7 @@ func _init(card_data: CardData = null):
 		cooldown_timer = Timer.new();
 		add_child(cooldown_timer)
 		cooldown_timer.one_shot = true;
+		cooldown_timer.timeout.connect(func(): can_use = true);
 
 func execute():
 	if !can_use:
@@ -26,6 +27,7 @@ func execute():
 	if data.cooldown > 0:
 		cooldown_timer.wait_time = data.cooldown;
 		cooldown_timer.start();
+		can_use = false;
 	
 	if data.single_use:
 		if data.respawn_after_use and has_meta("card"):

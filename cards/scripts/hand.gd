@@ -22,8 +22,8 @@ func remove_all_abilities() -> void:
 	cards.clear();
 		
 func try_use_ability(ability: String) -> Card:
-	var filtered = cards.filter(func(x: Card): return x.data.type == ability);
-	if filtered.size() != 0 && filtered[0].has_method("execute"):
+	var filtered: Array[Card] = cards.filter(func(x: Card): return x.data.type == ability);
+	if filtered.size() != 0 && filtered[0].has_method("execute") && filtered[0].can_use:
 		filtered[0].execute();
 		return filtered[0];
 	else:
