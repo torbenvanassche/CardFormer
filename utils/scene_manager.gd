@@ -22,11 +22,8 @@ var active_scene: Node:
 			if active_scene.has_method("on_disable"):
 				active_scene.on_disable();
 		active_scene = new_scene;
-		active_scene.visible = true;
-		
+		active_scene.visible = true;		
 		scene_entered.emit(active_scene);
-		if active_scene.has_method("on_enable"):
-			active_scene.on_enable();
 			
 func get_or_create_scene(scene_name: String):	
 	var filtered: Array = scenes.filter(func(scene: SceneInfo): return scene.id == scene_name);

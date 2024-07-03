@@ -1,4 +1,9 @@
 extends Area2D
 
 func on_enter():
-	SceneManager.instance.set_active_scene("battle", true, false)
+	var scene_init_data = {
+		"player": Manager.instance.player,
+		"enemy": self
+	}
+	
+	SceneManager.instance.set_active_scene("battle", true, false, scene_init_data)

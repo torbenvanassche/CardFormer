@@ -27,7 +27,7 @@ single_use = false
 respawn_after_use = false
 type = "attack"
 
-[node name="game_scene" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+[node name="platforming" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
 script = ExtResource("1_h4yfy")
 tilemap = NodePath("TileMap")
 player = NodePath("Character")
