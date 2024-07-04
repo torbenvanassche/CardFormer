@@ -45,7 +45,7 @@ func _ready():
 		top_bar.custom_minimum_size = Vector2(override_size.x, 50)
 		content_panel.custom_minimum_size = Vector2(override_size.x, override_size.y - top_bar.size.y)
 	
-func on_enable(options: Dictionary = {}):
+func on_enable(_options: Dictionary = {}):
 	visible = true;
 		
 	match display_mode:

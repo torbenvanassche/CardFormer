@@ -11,7 +11,7 @@ func _ready():
 	settings_button.pressed.connect(func(): print("Not implemented yet."))
 	
 	quit_button.pressed.connect(func(): window_controller.close_requested.emit())
-	quit_button.pressed.connect(SceneManager.instance.set_active_scene.bind("main_menu", true, true))
+	quit_button.pressed.connect(SceneManager.instance.reset_to_scene.bind("main_menu"))
 
 func on_disable():
 	Manager.instance.pause(false)

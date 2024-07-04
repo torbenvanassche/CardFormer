@@ -10,7 +10,7 @@ signal scene_exited(scene: Node)
 
 func _ready():
 	SceneManager.instance = self;
-	set_active_scene("main_menu", true, true)
+	set_active_scene("main_menu", SceneConfig.new(true, true, true))
 
 var active_scene: Node:
 	get: return active_scene;
@@ -48,27 +48,35 @@ func node_to_info(node: Node) -> SceneInfo:
 	Manager.debug_err("Could not find " + node.name + " in scenes.")
 	return null
 		
-func set_active_scene(scene_name: String, hide_current_scene: bool, free_current_scene: bool = false, options: Dictionary = {}) -> Node:
+func set_active_scene(scene_name: String, config: SceneConfig) -> Node:
 	var previous_scene_info: SceneInfo = null;
 	if active_scene:
 		previous_scene_info = node_to_info(active_scene);
-		if hide_current_scene:
+		if config.disable_processing:
+			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+		if config.hide_current:
 			active_scene.visible = false;
-		if free_current_scene: 
+		if config.free_current: 
 			previous_scene_info.node.queue_free() 
 	active_scene = get_or_create_scene(scene_name)
 	if active_scene:
 		active_scene.set_meta("previous_scene_info", previous_scene_info)
 		if active_scene.has_method("on_enable"):
-			active_scene.on_enable(options)
+			active_scene.on_enable(config.custom_parameters)
 	return active_scene;
+	
+func reset_to_scene(scene_name: String):
+	for sceneInfo in scenes:
+		if sceneInfo.id != scene_name && sceneInfo.node != null:
+			sceneInfo.node.queue_free()
+	set_active_scene(scene_name, SceneConfig.new())
 		
-func to_previous_scene(hide_current: bool = false, remove_current: bool = false):
+func to_previous_scene(hide_current: bool = false, stop_processing_current: bool = false, remove_current: bool = false):
 	var scene_info: SceneInfo = active_scene.get_meta("previous_scene_info")
 	active_scene.remove_meta("previous_scene_info")
 
 	if scene_info:
-		set_active_scene(scene_info.id, hide_current, remove_current);
+		set_active_scene(scene_info.id, SceneConfig.new(hide_current, stop_processing_current, remove_current));
 		
 func ui_is_open(exceptions: Array[String] = ["pause"]) -> bool:
 	return get_children().all(func(x: Node): return node_to_info(x).is_ui && x.visible && !exceptions.has(node_to_info(x).id));

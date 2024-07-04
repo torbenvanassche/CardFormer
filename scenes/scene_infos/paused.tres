@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SceneInfo" load_steps=3 format=3 uid="uid://cw1exi0jk6hbw"]
 
 [ext_resource type="PackedScene" uid="uid://cab8b0fs7luja" path="res://scenes/paused.tscn" id="1_hsvik"]
-[ext_resource type="Script" path="res://utils/scene_info.gd" id="1_vwlj5"]
+[ext_resource type="Script" path="res://utils/resources/scene_info.gd" id="1_vwlj5"]
 
 [resource]
 script = ExtResource("1_vwlj5")

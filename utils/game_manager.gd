@@ -15,7 +15,7 @@ var scroll_in_use: bool = false;
 func _ready():
 	on_enable.call_deferred()
 	
-func on_enable(options: Dictionary = {}):
+func on_enable(_options: Dictionary = {}):
 	GUI.instance.text_box.print("Be careful, most cards only have limited uses!") 
 
 func _enter_tree():
@@ -26,7 +26,7 @@ func _enter_tree():
 func pause(pause_game = !get_tree().paused):
 	get_tree().paused = pause_game
 	if pause_game:
-		SceneManager.instance.set_active_scene("pause", false);
+		SceneManager.instance.set_active_scene("pause", SceneConfig.new(false));
 	
 func get_tile_position(position: Vector2) -> Vector2:
 	return tilemap.local_to_map(position)

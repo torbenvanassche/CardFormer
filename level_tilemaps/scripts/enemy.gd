@@ -6,4 +6,4 @@ func on_enter():
 		"enemy": self
 	}
 	
-	SceneManager.instance.set_active_scene("battle", true, false, scene_init_data)
+	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, scene_init_data))

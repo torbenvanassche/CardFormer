@@ -8,4 +8,4 @@
 
 [node name="main" type="Node"]
 script = ExtResource("1_a7a6j")
-scenes = Array[Resource("res://utils/scene_info.gd")]([ExtResource("2_o1frq"), ExtResource("3_bgbxr"), ExtResource("4_j8g2k"), ExtResource("5_qeyxy")])
+scenes = Array[Resource("res://utils/resources/scene_info.gd")]([ExtResource("2_o1frq"), ExtResource("3_bgbxr"), ExtResource("4_j8g2k"), ExtResource("5_qeyxy")])
