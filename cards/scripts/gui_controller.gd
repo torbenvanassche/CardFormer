@@ -8,6 +8,11 @@ var ability_slots: Array[CardUI];
 @onready var ability_parent: Control = $CanvasLayer/MarginContainer/HBoxContainer;
 @onready var text_box: Printer = $CanvasLayer/text_container/text_box;
 
+func reset():
+	for slot in ability_slots:
+		slot.queue_free();
+	ability_slots.clear();
+
 func _ready():
 	GUI.instance = self;
 	ability_slots.append_array(ability_parent.get_children())

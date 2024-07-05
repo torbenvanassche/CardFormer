@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=12 format=3 uid="uid://juw7ny6olbq7"]
 
-[ext_resource type="Script" path="res://utils/game_manager.gd" id="1_h4yfy"]
+[ext_resource type="Script" path="res://utils/platformer.gd" id="1_phppl"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="2_8lwmk"]
 [ext_resource type="Script" path="res://utils/camera.gd" id="2_hjqft"]
 [ext_resource type="Script" path="res://utils/settings.gd" id="3_ga4kw"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/flying_enemy.tscn" id="6_x3oua"]
 [ext_resource type="Script" path="res://cards/card_functions/attack_card.gd" id="7_qf354"]
 [ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="8_e8oy1"]
-[ext_resource type="PackedScene" uid="uid://8mabj8ivkery" path="res://scenes/user_interface.tscn" id="10_lya8d"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_ga4kw")
@@ -28,7 +27,7 @@ respawn_after_use = false
 type = "attack"
 
 [node name="platforming" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
-script = ExtResource("1_h4yfy")
+script = ExtResource("1_phppl")
 tilemap = NodePath("TileMap")
 player = NodePath("Character")
 
@@ -57,6 +56,3 @@ position = Vector2(-83, -131)
 [node name="card" parent="." instance=ExtResource("6_11i2g")]
 position = Vector2(18, -39)
 card_data = SubResource("Resource_faymy")
-
-[node name="user_interface" parent="." instance=ExtResource("10_lya8d")]
-visible = false

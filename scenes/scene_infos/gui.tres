@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SceneInfo" load_steps=3 format=3 uid="uid://bu7rw3314dsia"]
+
+[ext_resource type="PackedScene" uid="uid://8mabj8ivkery" path="res://scenes/user_interface.tscn" id="1_k2jrn"]
+[ext_resource type="Script" path="res://utils/resources/scene_info.gd" id="1_xpycc"]
+
+[resource]
+script = ExtResource("1_xpycc")
+id = "gui"
+packed_scene = ExtResource("1_k2jrn")
+is_ui = true

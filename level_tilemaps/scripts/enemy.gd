@@ -2,7 +2,7 @@ extends Area2D
 
 func on_enter():
 	var scene_init_data = {
-		"player": Manager.instance.player,
+		"player": Platformer.instance.player,
 		"enemy": self
 	}
 	

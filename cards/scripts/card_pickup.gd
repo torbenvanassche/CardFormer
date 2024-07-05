@@ -15,7 +15,7 @@ func on_enable():
 
 func on_enter():
 	var card: Card = Card.new(card_data);
-	Manager.instance.player.deck.add_card(card)
+	Platformer.instance.player.deck.add_card(card)
 	if card_data.respawn_after_use:
 		card_data.set_meta("card", self)
 		set_deferred("monitorable", false)
