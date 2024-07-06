@@ -21,7 +21,7 @@ signal left_click();
 signal right_click();
 	
 func _process(_delta):
-	if card != null && card.data.cooldown != 0:
+	if card != null && card.data.cooldown != 0 && card.cooldown_timer != null:
 		cooldown_overlay.value = card.cooldown_timer.time_left;
 
 func initialize():	

@@ -26,9 +26,10 @@ single_use = false
 respawn_after_use = false
 type = "attack"
 
-[node name="platforming" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+[node name="platforming" type="Node2D" node_paths=PackedStringArray("tilemap", "camera", "player")]
 script = ExtResource("1_phppl")
 tilemap = NodePath("TileMap")
+camera = NodePath("Camera2D")
 player = NodePath("Character")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]

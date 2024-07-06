@@ -49,9 +49,12 @@ func node_to_info(node: Node) -> SceneInfo:
 	return null
 		
 func set_active_scene(scene_name: String, config: SceneConfig) -> Node:
+	
 	var previous_scene_info: SceneInfo = null;
 	if active_scene:
 		previous_scene_info = node_to_info(active_scene);
+		if previous_scene_info.id == scene_name:
+			return; 
 		if config.disable_processing:
 			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 		if config.hide_current:

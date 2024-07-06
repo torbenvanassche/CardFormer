@@ -3,12 +3,15 @@ extends Node
 
 static var instance: Platformer;
 @export var tilemap: TileMap;
-var camera: Camera2D;
+@export var camera: Camera2D;
 @export var player: PlayerController;
 
 func _enter_tree():
 	Platformer.instance = self;
 	SceneManager.instance.set_active_scene("gui", SceneConfig.new())
+	
+func _ready():
+	camera.make_current()
 
 func get_tile_position(position: Vector2) -> Vector2:
 	return tilemap.local_to_map(position)

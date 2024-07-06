@@ -39,5 +39,5 @@ func flip():
 	is_front = !is_front;
 
 func _exit_tree():
-	cooldown_timer.queue_free()
-	pass
+	if cooldown_timer != null:
+		cooldown_timer.queue_free()
