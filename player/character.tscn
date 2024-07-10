@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsliqk4ja0rgt"]
+[gd_scene load_steps=9 format=3 uid="uid://bsliqk4ja0rgt"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_ptweb"]
 [ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="2_mbac0"]
 [ext_resource type="Texture2D" uid="uid://buoqt562jxbyr" path="res://emote_handler/emotes_pixel_style.png" id="3_teyap"]
 [ext_resource type="Script" path="res://emote_handler/emote_handler.gd" id="4_i5um0"]
 [ext_resource type="Script" path="res://cards/scripts/hand.gd" id="5_sn3a2"]
+[ext_resource type="Script" path="res://player/player_platformer.gd" id="6_tevtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
 size = Vector2(20, 23)
@@ -43,3 +44,8 @@ dictionary_path = "res://emote_handler/emotes_lookup.json"
 
 [node name="Hand" type="Node" parent="."]
 script = ExtResource("5_sn3a2")
+
+[node name="platformer_controller" type="Node2D" parent="."]
+script = ExtResource("6_tevtp")
+jump_velocity = -350.0
+speed = 160.0

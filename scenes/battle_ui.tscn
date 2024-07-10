@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bvr3u0v4qrr3u"]
+
+[node name="combat_ui" type="CanvasLayer"]

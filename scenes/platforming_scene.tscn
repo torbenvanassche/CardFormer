@@ -48,8 +48,6 @@ layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 196616, 0, 13106
 
 [node name="Character" parent="." instance=ExtResource("4_56i5u")]
 position = Vector2(-105, 8)
-speed = 160.0
-jump_velocity = -350.0
 
 [node name="flying_enemy" parent="." instance=ExtResource("6_x3oua")]
 position = Vector2(-83, -131)

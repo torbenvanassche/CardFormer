@@ -16,7 +16,7 @@ func reset():
 func _ready():
 	GUI.instance = self;
 	ability_slots.append_array(ability_parent.get_children())
-
+	
 func add_to_ui(card: Card) -> CardUI:
 	var card_instance: CardUI = card_ui_preload.instantiate()
 	ability_parent.add_child(card_instance)

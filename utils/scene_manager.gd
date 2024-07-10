@@ -47,9 +47,18 @@ func node_to_info(node: Node) -> SceneInfo:
 		return filtered[0];
 	Manager.debug_err("Could not find " + node.name + " in scenes.")
 	return null
+	
+func get_scene_info(id: String) -> SceneInfo:
+	var filtered = scenes.filter(func(x: SceneInfo): return x.id == id);
+	if filtered.size() == 1:
+		return filtered[0];
+	Manager.debug_err("Could not find " + id + " in scenes.")
+	return null;
+
+func set_scene_reference(id: String, target: Node):
+	get_scene_info(id).node = target;
 		
 func set_active_scene(scene_name: String, config: SceneConfig) -> Node:
-	
 	var previous_scene_info: SceneInfo = null;
 	if active_scene:
 		previous_scene_info = node_to_info(active_scene);

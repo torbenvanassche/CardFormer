@@ -11,7 +11,7 @@ func on_enable(options: Dictionary):
 	camera.make_current();
 	if options != {}:
 		apply_options.call_deferred(options)
-		battle_handler.new();
+		battle_handler = BattleHandler.new();
 	
 func apply_options(options: Dictionary):
 	var player: CharacterBody2D = options.player;
