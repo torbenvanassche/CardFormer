@@ -4,12 +4,14 @@ extends Node
 
 @onready var player_position: Node2D = $PlayerPosition;
 @onready var enemy_position: Node2D = $EnemyPosition;
+var battle_handler: BattleHandler;
 
 func on_enable(options: Dictionary):
 	#set to the correct camera
 	camera.make_current();
 	if options != {}:
 		apply_options.call_deferred(options)
+		battle_handler.new();
 	
 func apply_options(options: Dictionary):
 	var player: CharacterBody2D = options.player;

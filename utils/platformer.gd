@@ -10,7 +10,7 @@ func _enter_tree():
 	Platformer.instance = self;
 	SceneManager.instance.set_active_scene("gui", SceneConfig.new())
 	
-func _ready():
+func on_enter():
 	camera.make_current()
 
 func get_tile_position(position: Vector2) -> Vector2:
