@@ -45,7 +45,7 @@ dictionary_path = "res://emote_handler/emotes_lookup.json"
 [node name="Hand" type="Node" parent="."]
 script = ExtResource("5_sn3a2")
 
-[node name="platformer_controller" type="Node2D" parent="."]
+[node name="platformer_controller" type="Node" parent="."]
 script = ExtResource("6_tevtp")
 jump_velocity = -350.0
 speed = 160.0

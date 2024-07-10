@@ -1,7 +1,10 @@
 class_name BattleHandler
 extends Node
 
-var participants: Array[Node] = []
+var _participants: Array[Node] = []
 
-func _ready():
+signal turn_end()
+
+func _init(participants: Array[Node] = []):
+	_participants = participants;
 	pass

@@ -11,10 +11,7 @@ var jump_pressed_not_on_ground: bool = false;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity");
 
-func _physics_process(delta):
-	if not character_body.is_on_floor():
-		character_body.velocity.y += gravity * delta
-
+func _process_platformer(delta: float):
 	if Input.is_action_just_pressed("jump"):
 		if character_body.is_on_floor():
 			jump()
@@ -41,6 +38,14 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("interact") && character_body.current_triggers.size() != 0:
 		interact();
+
+func _physics_process(delta):
+	if not character_body.is_on_floor():
+		character_body.velocity.y += gravity * delta
+		
+	if not character_body.is_in_combat:
+		_process_platformer(delta)
+	
 	character_body.move_and_slide()
 	
 func jump():

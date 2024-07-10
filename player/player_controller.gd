@@ -9,6 +9,7 @@ var deck: Deck = Deck.new();
 @export var hand: Hand;
 
 @onready var platforming_controller: PlatformerPlayer = $"platformer_controller"
+var is_in_combat: bool = false;
 
 #collision management
 var current_triggers: Array[Node2D];

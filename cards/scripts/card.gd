@@ -6,6 +6,7 @@ var cooldown_timer: Timer;
 var is_front: bool = true;
 
 var can_use: bool = true;
+var script_container: Node;
 
 func _init(card_data: CardData = null):
 	data = card_data;
@@ -15,14 +16,18 @@ func _init(card_data: CardData = null):
 		add_child(cooldown_timer)
 		cooldown_timer.one_shot = true;
 		cooldown_timer.timeout.connect(func(): can_use = true);
+		
+func _ready():
+	script_container = Node.new();
+	script_container.set_script(data.exec_script)
 
 func execute():
 	if !can_use:
 		return;
 		
 	var function_name = "execute_front" if is_front else "execute_back";
-	if data.has_method(function_name):
-		data.call(function_name)
+	if script_container.has_method(function_name):
+		script_container.call(function_name)
 	
 	if data.cooldown > 0:
 		cooldown_timer.wait_time = data.cooldown;
@@ -37,7 +42,3 @@ func execute():
 
 func flip():
 	is_front = !is_front;
-
-func _exit_tree():
-	if cooldown_timer != null:
-		cooldown_timer.queue_free()
