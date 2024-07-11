@@ -11,11 +11,14 @@ func on_enable(options: Dictionary):
 	camera.make_current();
 	if options != {}:
 		apply_options.call_deferred(options)
-		battle_handler = BattleHandler.new();
 	
 func apply_options(options: Dictionary):
-	var player: CharacterBody2D = options.player;
+	var player: PlayerController = options.player;
+	player.is_in_combat = true;
+	
 	var enemy: Enemy = options.enemy;
+	
+	battle_handler = BattleHandler.new([player, enemy]);
 	
 	#store old position to place player back later
 	player.set_meta("position", player.global_position);

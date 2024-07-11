@@ -31,3 +31,7 @@ func _on_leave(body: Node2D):
 		current_triggers.erase(body);
 		if body.has_method("on_leave"):
 			body.on_leave();
+
+func battle(handler: BattleHandler):
+	print("player act");
+	handler.turn_end.emit();

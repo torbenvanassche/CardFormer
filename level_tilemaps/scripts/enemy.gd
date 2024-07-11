@@ -7,3 +7,8 @@ func on_enter():
 
 func _on_enter_platformer():
 	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, { "player": Platformer.instance.player, "enemy": self }))
+
+func battle(handler: BattleHandler):
+	print("enemy attack");
+	handler.turn_end.emit();
+	
