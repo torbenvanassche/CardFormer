@@ -50,12 +50,11 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 1132.0
 offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_characters = 0
 visible_characters_behavior = 1
-visible_ratio = 0.0
 script = ExtResource("1_dqcck")
 print_delay = 0.05
 
@@ -67,10 +66,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1062.0
-offset_top = 50.0
-offset_right = 1087.0
-offset_bottom = 75.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = -25.0
+offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -82,3 +81,12 @@ libraries = {
 "": SubResource("AnimationLibrary_wrn7f")
 }
 autoplay = "move_up_down"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

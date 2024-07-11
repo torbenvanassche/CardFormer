@@ -10,5 +10,5 @@ func _on_enter_platformer():
 
 func battle(handler: BattleHandler):
 	print("enemy attack");
-	handler.turn_end.emit();
+	handler.turn_end.emit(self);
 	

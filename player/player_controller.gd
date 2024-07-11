@@ -34,4 +34,4 @@ func _on_leave(body: Node2D):
 
 func battle(handler: BattleHandler):
 	print("player act");
-	handler.turn_end.emit();
+	handler.turn_end.emit(self);
