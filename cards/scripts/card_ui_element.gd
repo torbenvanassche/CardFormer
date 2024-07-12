@@ -48,6 +48,7 @@ func _reset_overlay():
 	
 func _gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed():
+		release_focus()
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			left_click.emit();
 		if event.button_index == MOUSE_BUTTON_RIGHT:

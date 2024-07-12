@@ -16,11 +16,10 @@ func _init(participants: Array[Node] = []):
 	_participants[current_participant].battle(self);
 	
 func to_next(n: Node):
-	if n != _participants[current_participant]:
+	if n != _participants[current_participant] || not Platformer.instance.player.is_in_combat:
 		return
 	
 	current_participant += 1;
-	
 	if current_participant < _participants.size():
 		_participants[current_participant].battle(self);
 	else:
