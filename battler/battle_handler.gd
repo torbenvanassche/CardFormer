@@ -2,7 +2,7 @@ class_name BattleHandler
 extends Node
 
 var _participants: Array[Node] = []
-var current_participant: int = 0;
+var _current_participant_index: int = 0;
 
 signal turn_end(n: Node)
 
@@ -11,16 +11,19 @@ func _init(participants: Array[Node] = []):
 
 	_participants = participants
 	_participants.shuffle()
+	
+	
 	turn_end.connect(to_next)
-
-	_participants[current_participant].battle(self);
+	to_next.call_deferred(_participants[_current_participant_index])
 	
 func to_next(n: Node):
-	if n != _participants[current_participant] || not Platformer.instance.player.is_in_combat:
+	var curr_participant = _participants[_current_participant_index];
+	if not Manager.instance.player.is_in_combat:
 		return
+		
+	_current_participant_index += 1; 
+	if _current_participant_index >= _participants.size():
+		_current_participant_index = 0;
 	
-	current_participant += 1;
-	if current_participant < _participants.size():
-		_participants[current_participant].battle(self);
-	else:
-		print("Combat loop end.")
+	if curr_participant.has_method("execute"):
+		curr_participant.execute();

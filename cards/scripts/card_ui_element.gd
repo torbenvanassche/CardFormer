@@ -55,7 +55,6 @@ func _gui_input(event):
 			right_click.emit();
 			
 func flip():
-	card.flip();
 	card_background.texture = card_front if card.is_front else card_back;
 	
 func destroy():

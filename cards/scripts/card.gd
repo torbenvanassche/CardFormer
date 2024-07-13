@@ -24,10 +24,8 @@ func _ready():
 func execute():
 	if !can_use:
 		return;
-		
-	var function_name = "execute_front" if is_front else "execute_back";
-	if script_container.has_method(function_name):
-		script_container.call(function_name)
+	
+	script_container.execute(is_front)
 	
 	if data.cooldown > 0:
 		cooldown_timer.wait_time = data.cooldown;

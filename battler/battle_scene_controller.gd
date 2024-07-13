@@ -4,7 +4,6 @@ extends Node
 
 @onready var player_position: Node2D = $PlayerPosition;
 @onready var enemy_position: Node2D = $EnemyPosition;
-var battle_handler: BattleHandler;
 
 func on_enable(options: Dictionary):
 	#set to the correct camera
@@ -14,11 +13,13 @@ func on_enable(options: Dictionary):
 	
 func apply_options(options: Dictionary):
 	var player: PlayerController = options.player;
+	player.velocity = Vector2()
 	player.is_in_combat = true;
+	player.player_sprite.flip_h = true;
 	
 	var enemy: Enemy = options.enemy;
 	
-	battle_handler = BattleHandler.new([player, enemy]);
+	Manager.instance.battle_handler = BattleHandler.new([player, enemy]);
 	
 	#store old position to place player back later
 	player.set_meta("position", player.global_position);

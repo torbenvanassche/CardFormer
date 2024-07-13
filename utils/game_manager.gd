@@ -5,6 +5,10 @@ extends Node
 static var instance: Manager;
 static var debug: bool = true;
 
+var player: PlayerController;
+var in_combat: bool = false;
+var battle_handler: BattleHandler;
+
 var current_save_file: SaveFile;
 var scroll_in_use: bool = false;
 

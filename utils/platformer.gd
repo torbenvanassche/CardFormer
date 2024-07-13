@@ -4,7 +4,6 @@ extends Node
 static var instance: Platformer;
 @export var tilemap: TileMap;
 @export var camera: Camera2D;
-@export var player: PlayerController;
 
 func _enter_tree():
 	Platformer.instance = self;
