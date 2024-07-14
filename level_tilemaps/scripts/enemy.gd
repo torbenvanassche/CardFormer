@@ -11,4 +11,3 @@ func _on_enter_platformer():
 func execute():
 	print("enemy attack");
 	Manager.instance.battle_handler.turn_end.emit(self);
-	

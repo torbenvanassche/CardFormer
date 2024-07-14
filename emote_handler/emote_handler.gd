@@ -5,12 +5,11 @@ extends Sprite2D
 @onready var _emotes: Array = FileUtils.load_json(dictionary_path);
 var timer: Timer = Timer.new();
 
-@export var emote_time: float = 1;
-@export var child_sprite: Sprite2D;
+@export var emote_display_time: float = 1;
 
 func _ready():
 	timer.timeout.connect(set_emote)
-	timer.wait_time = emote_time;
+	timer.wait_time = emote_display_time;
 	timer.one_shot = true;
 	add_child(timer);
 	

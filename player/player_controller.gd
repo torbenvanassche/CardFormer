@@ -2,13 +2,13 @@ class_name PlayerController
 extends CharacterBody2D
 
 #Player data stuff
-@export var player_sprite: AnimatedSprite2D;
-@export var player_trigger: Area2D;
-@export var emote_handler: EmoteHandler;
 var deck: Deck = Deck.new();
-@export var hand: Hand;
+var hand: Hand = Hand.new();
 
 @onready var platforming_controller: PlatformerPlayer = $"platformer_controller"
+@onready var player_sprite: AnimatedSprite2D = $player_sprite
+@onready var emote_handler: EmoteHandler = $emote_handler;
+@onready var player_trigger: Area2D = $player_trigger;
 var is_in_combat: bool = false;
 
 #collision management
