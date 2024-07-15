@@ -9,10 +9,9 @@ var hand: Hand = Hand.new();
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
-var is_in_combat: bool = false;
 
-#collision management
 var current_triggers: Array[Node2D];
+var is_in_combat: bool = false;
 
 func _init():
 	Manager.instance.player = self;

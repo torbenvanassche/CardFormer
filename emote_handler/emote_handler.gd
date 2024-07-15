@@ -21,7 +21,7 @@ func get_emote_by_id(id: String):
 	if results.size() != 0:
 		return results[0];
 	else:
-		Manager.debug_err(id + " was not found in the emote array.")
+		Debug.err(id + " was not found in the emote array.")
 		return null;
 
 func set_emote(f: int = -1, remove_on_timer: bool = true):

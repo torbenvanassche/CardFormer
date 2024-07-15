@@ -28,7 +28,7 @@ var active_scene: Node:
 func get_or_create_scene(scene_name: String):	
 	var filtered: Array = scenes.filter(func(scene: SceneInfo): return scene.id == scene_name);
 	if filtered.size() == 0:
-		Manager.debug_err(scene_name + " was not found, unable to instantiate!")	
+		Debug.err(scene_name + " was not found, unable to instantiate!")	
 	elif filtered.size() == 1:
 		var scene_info: SceneInfo = filtered[0];
 		if is_instance_valid(scene_info.node):
@@ -39,20 +39,20 @@ func get_or_create_scene(scene_name: String):
 			scene_info.node = node
 			return node;
 	else:
-		Manager.debug_err(scene_name + " was invalid.")
+		Debug.err(scene_name + " was invalid.")
 		
 func node_to_info(node: Node) -> SceneInfo:
 	var filtered = scenes.filter(func(x: SceneInfo): return x.node == node);
 	if filtered.size() == 1:
 		return filtered[0];
-	Manager.debug_err("Could not find " + node.name + " in scenes.")
+	Debug.err("Could not find " + node.name + " in scenes.")
 	return null
 	
 func get_scene_info(id: String) -> SceneInfo:
 	var filtered = scenes.filter(func(x: SceneInfo): return x.id == id);
 	if filtered.size() == 1:
 		return filtered[0];
-	Manager.debug_err("Could not find " + id + " in scenes.")
+	Debug.err("Could not find " + id + " in scenes.")
 	return null;
 
 func set_scene_reference(id: String, target: Node):
