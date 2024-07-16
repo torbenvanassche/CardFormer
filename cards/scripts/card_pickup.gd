@@ -13,7 +13,7 @@ func on_enable():
 	if card_data.sprite_frame != -1:
 		card_sprite.frame = card_data.sprite_frame;
 
-func on_enter():
+func on_area_enter():
 	var card: Card = Card.new(card_data);
 	Manager.instance.player.deck.add_card(card)
 	if card_data.respawn_after_use:

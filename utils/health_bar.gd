@@ -1,7 +1,8 @@
+class_name HealthBar
 extends Node
 
-var _max_health: int = 100;
-var _current_health: int = 100;
+@export var _max_health: int = 100;
+@export var _current_health: int = 100;
 
 signal death()
 

@@ -1,12 +1,32 @@
 class_name Enemy
 extends Area2D
 
-func on_enter():
-	if get_parent() is Platformer:
-		_on_enter_platformer();
+@onready var health_bar: HealthBar = $ProgressBar/HealthBar;
+@onready var health_bar_ui: ProgressBar = $ProgressBar;
 
-func _on_enter_platformer():
+#called when the node enters the tree, this also gets called when reparenting for the combat scene
+func _enter_tree():
+	var parent: Node = get_parent();
+	if parent is Platformer:
+		_on_tree_enter_platformer.call_deferred()
+	if parent is Battler:
+		_on_combat_start.call_deferred();
+		
+func _on_tree_enter_platformer():
+	health_bar_ui.visible = false;
+
+#handles the collision event when the player collides with this object
+func on_area_enter():
+	if get_parent() is Platformer:
+		_on_area_enter_platformer();
+
+#sub-handler for the collision for the platformer
+func _on_area_enter_platformer():
 	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, { "player": Manager.instance.player, "enemy": self }))
+
+func _on_combat_start():
+	health_bar_ui.visible = true;
+	pass
 
 func execute():
 	print("enemy attack");

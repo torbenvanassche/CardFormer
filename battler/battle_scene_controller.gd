@@ -1,3 +1,4 @@
+class_name Battler
 extends Node
 
 @export var camera: Camera2D;

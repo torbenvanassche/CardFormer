@@ -24,10 +24,10 @@ func _ready():
 func _on_enter(body: Node2D):
 	if !current_triggers.has(body):
 		current_triggers.push_back(body);
-		if body.has_method("on_enter"):
-			body.on_enter();
+		if body.has_method("on_area_enter"):
+			body.on_area_enter();
 	
 func _on_leave(body: Node2D):
 	current_triggers.erase(body);
-	if body.has_method("on_leave"):
-		body.on_leave();
+	if body.has_method("on_area_leave"):
+		body.on_area_leave();

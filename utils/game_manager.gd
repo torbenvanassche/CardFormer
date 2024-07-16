@@ -11,9 +11,10 @@ var battle_handler: BattleHandler;
 var current_save_file: SaveFile;
 var scroll_in_use: bool = false;
 
+@export var orphan_timers: Node;
+
 func _enter_tree():
-	if not Debug.show_log:
-		Debug.message("Debug mode is set to " + str(Debug.show_log) + ", some messages may not be shown.")
+	Debug.message("Debug mode is set to " + str(Debug.show_log) + ", some messages may not be shown.")
 	Manager.instance = self;
 	
 func pause(pause_game = !get_tree().paused):

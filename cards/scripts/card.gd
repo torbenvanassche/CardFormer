@@ -12,20 +12,23 @@ func _init(card_data: CardData = null):
 	data = card_data;
 	
 	if !cooldown_timer:
-		cooldown_timer = Timer.new();
-		add_child(cooldown_timer)
+		cooldown_timer = Timer.new()
 		cooldown_timer.one_shot = true;
 		cooldown_timer.timeout.connect(func(): can_use = true);
+		Manager.instance.orphan_timers.add_child(cooldown_timer)
 		
-func _ready():
-	script_container = Node.new();
-	script_container.set_script(data.exec_script)
+func _exit_tree():
+	cooldown_timer.queue_free()
 
-func execute():
+func execute():	
 	if !can_use:
 		return;
 	
-	script_container.execute(is_front)
+	if script_container == null:
+		script_container = Node.new();
+		script_container.set_script(data.exec_script)
+	else:
+		script_container.execute(is_front)
 	
 	if data.cooldown > 0:
 		cooldown_timer.wait_time = data.cooldown;
