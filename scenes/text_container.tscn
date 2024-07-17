@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuv8y2t3rkmvx"]
+[gd_scene load_steps=4 format=3 uid="uid://cuv8y2t3rkmvx"]
 
 [ext_resource type="Script" path="res://utils/printer.gd" id="1_dqcck"]
 [ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="2_qpqh6"]
@@ -6,43 +6,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u6l7"]
 atlas = ExtResource("2_qpqh6")
 region = Rect2(420.105, 260.104, 7.97272, 7.70245)
-
-[sub_resource type="Animation" id="Animation_f3w2q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1062, 50)]
-}
-
-[sub_resource type="Animation" id="Animation_5yvxt"]
-resource_name = "move_up_down"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [50.0, 45.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrn7f"]
-_data = {
-"RESET": SubResource("Animation_f3w2q"),
-"move_up_down": SubResource("Animation_5yvxt")
-}
 
 [node name="text_box" type="Label"]
 custom_minimum_size = Vector2(0, 100)
@@ -59,28 +22,19 @@ script = ExtResource("1_dqcck")
 print_delay = 0.05
 
 [node name="Sprite2D" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1062.0
-offset_top = 50.0
-offset_right = 1087.0
-offset_bottom = 75.0
+offset_left = -25.0
+offset_top = -25.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 texture = SubResource("AtlasTexture_3u6l7")
 flip_v = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-libraries = {
-"": SubResource("AnimationLibrary_wrn7f")
-}
-autoplay = "move_up_down"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true

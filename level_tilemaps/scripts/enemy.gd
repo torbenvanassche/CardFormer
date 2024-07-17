@@ -3,6 +3,9 @@ extends Area2D
 
 @onready var health_bar: HealthBar = $ProgressBar/HealthBar;
 @onready var health_bar_ui: ProgressBar = $ProgressBar;
+@onready var _indicator: TextureRect = $indicator;
+
+signal clicked()
 
 #called when the node enters the tree, this also gets called when reparenting for the combat scene
 func _enter_tree():
@@ -31,3 +34,8 @@ func _on_combat_start():
 func execute():
 	print("enemy attack");
 	Manager.instance.battle_handler.turn_end.emit(self);
+	
+func _input_event(viewport, event, shape_idx):
+	if get_parent() is Battler && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		_indicator.visible = true;
+		clicked.emit();

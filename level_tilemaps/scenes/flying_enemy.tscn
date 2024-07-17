@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://rs5nt4pljhpf"]
+[gd_scene load_steps=9 format=3 uid="uid://rs5nt4pljhpf"]
 
 [ext_resource type="Script" path="res://level_tilemaps/scripts/enemy.gd" id="1_n1mse"]
 [ext_resource type="SpriteFrames" uid="uid://ccxe316pkrh8n" path="res://level_tilemaps/animations/flying_enemy.tres" id="1_ox45h"]
 [ext_resource type="Script" path="res://utils/health_bar.gd" id="3_1282k"]
+[ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_7o6xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ge7x"]
 size = Vector2(24, 10)
@@ -21,6 +22,10 @@ border_width_left = 1
 border_width_top = 1
 border_width_bottom = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mpts"]
+atlas = ExtResource("4_7o6xq")
+region = Rect2(420.105, 260.104, 7.97272, 7.70245)
+
 [node name="Node2D" type="Area2D"]
 script = ExtResource("1_n1mse")
 
@@ -35,6 +40,7 @@ frame = 1
 frame_progress = 0.212457
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -15.0
 offset_right = 20.0
@@ -46,3 +52,19 @@ show_percentage = false
 
 [node name="HealthBar" type="Node" parent="ProgressBar"]
 script = ExtResource("3_1282k")
+
+[node name="indicator" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = -32.0
+offset_right = 12.5
+offset_bottom = -7.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(12.5, 12.5)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_0mpts")
+flip_v = true
