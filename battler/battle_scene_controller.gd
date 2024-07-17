@@ -5,7 +5,7 @@ extends Node
 
 @onready var player_position: Node2D = $PlayerPosition;
 @onready var enemy_position: Node2D = $EnemyPosition;
-var target: Node;
+var target: Enemy;
 
 func on_enable(options: Dictionary):
 	#set to the correct camera
@@ -36,8 +36,10 @@ func apply_options(options: Dictionary):
 	player.global_position = player_position.global_position;
 	
 	for enemy in enemies:
-		enemy.set_meta("position", enemy.global_position);
-		enemy.get_parent().remove_child(enemy);
-		add_child(enemy);
-		enemy.global_position = enemy_position.global_position;
-		enemy.clicked.connect(func(): enemy = target);
+		var typed_enemy: Enemy = enemy;
+		typed_enemy.set_meta("position", typed_enemy.global_position);
+		typed_enemy.get_parent().remove_child(typed_enemy);
+		add_child(typed_enemy);
+		typed_enemy.global_position = enemy_position.global_position;
+		typed_enemy.clicked.connect(func(): target = typed_enemy);
+		

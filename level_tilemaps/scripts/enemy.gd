@@ -6,6 +6,7 @@ extends Area2D
 @onready var _indicator: TextureRect = $indicator;
 
 signal clicked()
+signal killed()
 
 #called when the node enters the tree, this also gets called when reparenting for the combat scene
 func _enter_tree():
@@ -28,8 +29,7 @@ func _on_area_enter_platformer():
 	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, { "player": Manager.instance.player, "enemy": self }))
 
 func _on_combat_start():
-	health_bar_ui.visible = true;
-	pass
+	health_bar.set_data(health_bar_ui)
 
 func execute():
 	print("enemy attack");
@@ -39,3 +39,6 @@ func _input_event(viewport, event, shape_idx):
 	if get_parent() is Battler && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		_indicator.visible = true;
 		clicked.emit();
+		
+func take_damage(amount: int):
+	health_bar.decrease_health(amount);

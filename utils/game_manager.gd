@@ -14,7 +14,8 @@ var scroll_in_use: bool = false;
 @export var orphan_timers: Node;
 
 func _enter_tree():
-	Debug.message("Debug mode is set to " + str(Debug.show_log) + ", some messages may not be shown.")
+	if Debug.show_log:
+		print("Debug mode is set to " + str(Debug.show_log) + ", some messages may not be shown.")
 	Manager.instance = self;
 	
 func pause(pause_game = !get_tree().paused):

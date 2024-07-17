@@ -20,7 +20,7 @@ func _init(card_data: CardData = null):
 func _exit_tree():
 	cooldown_timer.queue_free()
 
-func execute():	
+func execute():
 	if !can_use:
 		return;
 	

@@ -40,14 +40,14 @@ frame = 1
 frame_progress = 0.212457
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -20.0
 offset_top = -15.0
 offset_right = 20.0
 offset_bottom = -10.0
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_k5gs2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bj7ex")
-value = 30.0
+value = 100.0
 show_percentage = false
 
 [node name="HealthBar" type="Node" parent="ProgressBar"]
