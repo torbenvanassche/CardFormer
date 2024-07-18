@@ -27,8 +27,7 @@ func execute():
 	if script_container == null:
 		script_container = Node.new();
 		script_container.set_script(data.exec_script)
-	else:
-		script_container.execute(is_front)
+	script_container.execute(is_front)
 	
 	if data.cooldown > 0:
 		cooldown_timer.wait_time = data.cooldown;

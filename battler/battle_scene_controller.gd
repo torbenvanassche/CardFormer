@@ -5,7 +5,12 @@ extends Node
 
 @onready var player_position: Node2D = $PlayerPosition;
 @onready var enemy_position: Node2D = $EnemyPosition;
-var target: Enemy;
+var target: Enemy: 
+	set(value):
+		if target:
+			target.set_inactive()
+		target = value;
+		target.set_active()
 
 func on_enable(options: Dictionary):
 	#set to the correct camera
@@ -15,11 +20,9 @@ func on_enable(options: Dictionary):
 	
 func apply_options(options: Dictionary):
 	var player: PlayerController = options.player;
-	player.velocity = Vector2()
-	player.is_in_combat = true;
-	player.player_sprite.flip_h = true;
+	player.set_combat_state(true)
 	
-	var enemies: Array[Node] = [];
+	var enemies: Array[Node] = []
 	if options.enemy is Array:
 		enemies = options.enemy;
 	else: 
@@ -28,6 +31,7 @@ func apply_options(options: Dictionary):
 	var participants = enemies.duplicate();
 	participants.append(player)
 	Manager.instance.battle_handler = BattleHandler.new(participants);
+	Manager.instance.battle_handler.combat_end.connect(_on_combat_end)
 	
 	#store old position to place player back later
 	player.set_meta("position", player.global_position);
@@ -42,4 +46,9 @@ func apply_options(options: Dictionary):
 		add_child(typed_enemy);
 		typed_enemy.global_position = enemy_position.global_position;
 		typed_enemy.clicked.connect(func(): target = typed_enemy);
-		
+		typed_enemy.killed.connect(Manager.instance.battle_handler.remove_participants.bind(typed_enemy))
+	target = enemies[0]
+	
+#sub-handler for the collision for the platformer
+func _on_combat_end():
+	SceneManager.instance.set_active_scene("platformer", SceneConfig.new(true, true, false, false, { "player": Manager.instance.player }))

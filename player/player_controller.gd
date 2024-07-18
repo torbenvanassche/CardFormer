@@ -12,6 +12,7 @@ var hand: Hand = Hand.new();
 
 var current_triggers: Array[Node2D];
 var is_in_combat: bool = false;
+var sprite_flip_state: bool = false;
 
 func _init():
 	Manager.instance.player = self;
@@ -31,3 +32,9 @@ func _on_leave(body: Node2D):
 	current_triggers.erase(body);
 	if body.has_method("on_area_leave"):
 		body.on_area_leave();
+
+func set_combat_state(in_combat: bool):
+	if in_combat:
+		velocity = Vector2()
+	is_in_combat = in_combat;
+	player_sprite.flip_h = true;

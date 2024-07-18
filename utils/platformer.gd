@@ -9,8 +9,14 @@ func _enter_tree():
 	Platformer.instance = self;
 	SceneManager.instance.set_active_scene("gui", SceneConfig.new())
 	
-func on_enter():
+func on_enable(options: Dictionary):
 	camera.make_current()
+	if options.has("player"):
+		var player: PlayerController = options.player;
+		player.set_combat_state(false)
+		player.get_parent().remove_child(player);
+		add_child(player);
+		player.global_position = player.get_meta("position");
 
 func get_tile_position(position: Vector2) -> Vector2:
 	return tilemap.local_to_map(position)
