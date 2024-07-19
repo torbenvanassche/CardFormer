@@ -75,6 +75,7 @@ func set_active_scene(scene_name: String, config: SceneConfig) -> Node:
 		active_scene.set_meta("previous_scene_info", previous_scene_info)
 		if active_scene.has_method("on_enable"):
 			active_scene.on_enable(config.custom_parameters)
+			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	return active_scene;
 	
 func reset_to_scene(scene_name: String):

@@ -58,6 +58,3 @@ func interact():
 		return character_body.position.distance_squared_to(a.position) > character_body.position.distance_squared_to(b.position))
 	if character_body.current_triggers.size() != 0 and character_body.current_triggers[0].has_method("execute"):
 		character_body.current_triggers[0].execute();
-		
-func attack():
-	print("attack")

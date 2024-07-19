@@ -47,7 +47,7 @@ offset_bottom = -10.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_k5gs2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bj7ex")
-value = 100.0
+value = 98.0
 show_percentage = false
 
 [node name="HealthBar" type="Node" parent="ProgressBar"]

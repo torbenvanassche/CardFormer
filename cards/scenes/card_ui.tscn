@@ -25,6 +25,7 @@ flat = true
 script = ExtResource("1_ly78f")
 
 [node name="ability_card" type="TextureRect" parent="."]
+clip_children = 2
 custom_minimum_size = Vector2(51, 50)
 layout_mode = 1
 anchors_preset = 15
@@ -36,8 +37,7 @@ size_flags_vertical = 0
 texture = ExtResource("2_xammx")
 expand_mode = 3
 
-[node name="Sprite2D" type="TextureRect" parent="."]
-visible = false
+[node name="Sprite2D" type="TextureRect" parent="ability_card"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,15 +54,15 @@ pivot_offset = Vector2(25, 25)
 mouse_filter = 2
 texture = SubResource("AtlasTexture_1ptcc")
 
-[node name="cooldown_overlay" type="ProgressBar" parent="Sprite2D"]
+[node name="cooldown_overlay" type="ProgressBar" parent="ability_card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -14.0
-offset_right = -3.0
-offset_bottom = 17.0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = -17.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
