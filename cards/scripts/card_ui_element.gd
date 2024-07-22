@@ -25,9 +25,9 @@ func _process(_delta):
 		cooldown_overlay.value = card.cooldown_timer.time_left;
 
 func initialize():	
-	cooldown_overlay = $Sprite2D/cooldown_overlay;
+	cooldown_overlay = $ability_card/cooldown_overlay;
 	card_background = $ability_card;
-	internal_sprite = $Sprite2D;
+	internal_sprite = $ability_card/Sprite2D;
 	
 	card_background.texture = card_front if card.is_front else card_back;
 	internal_sprite.texture = internal_sprite.texture.duplicate()
