@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://cards/scripts/card_ui_element.gd" id="1_ly78f"]
 [ext_resource type="Texture2D" uid="uid://pqu8udx8geff" path="res://cards/import/card_front.png" id="2_xammx"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ihp82"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kswgt"]
 load_path = "res://.godot/imported/card_types.png-25f4941c8c90fcb5b06046ca339006f5.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ptcc"]
-atlas = SubResource("CompressedTexture2D_ihp82")
+atlas = SubResource("CompressedTexture2D_kswgt")
 region = Rect2(0, 0, 18, 18)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdat"]
