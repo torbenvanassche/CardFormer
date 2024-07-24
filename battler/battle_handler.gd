@@ -17,7 +17,7 @@ func _init(participants: Array[Node] = []):
 	turn_end.connect(to_next)	
 	to_next.call_deferred(_participants[_current_participant_index])
 	
-func to_next(n: Node):	
+func to_next(_n: Node):
 	if _participants.size() == 1 && _participants[0] is PlayerController:
 		combat_end.emit();
 		return;

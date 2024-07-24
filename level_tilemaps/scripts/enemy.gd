@@ -36,7 +36,7 @@ func execute():
 	print("enemy attack");
 	Manager.instance.battle_handler.turn_end.emit(self);
 	
-func _input_event(viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if get_parent() is Battler && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		clicked.emit();
 		set_active();

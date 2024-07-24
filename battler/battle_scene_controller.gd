@@ -17,6 +17,9 @@ func on_enable(options: Dictionary):
 	camera.make_current();
 	if options != {}:
 		apply_options.call_deferred(options)
+		
+	while !Manager.instance.player.hand.is_full() && !Manager.instance.player.deck.is_empty():
+		Manager.instance.player.hand.add_card(Manager.instance.player.deck.draw_card())
 	
 func apply_options(options: Dictionary):
 	var player: PlayerController = options.player;

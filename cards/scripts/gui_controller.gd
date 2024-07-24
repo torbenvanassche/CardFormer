@@ -5,7 +5,7 @@ static var instance: GUI;
 
 var ability_slots: Array[CardUI];
 @onready var card_ui_preload = preload("res://cards/scenes/card_ui.tscn")
-@onready var ability_parent: Control = $CanvasLayer/MarginContainer/HBoxContainer;
+@export var card_parent_combat: Control;
 @onready var text_box: Printer = $CanvasLayer/text_container/text_box;
 
 func reset():
@@ -15,10 +15,16 @@ func reset():
 
 func _ready():
 	GUI.instance = self;
-	ability_slots.append_array(ability_parent.get_children())
+	Manager.instance.player.player_combat_changed.connect(set_ui_state);
 	
-func add_to_ui(card: Card) -> CardUI:
+func add_card(card: Card) -> CardUI:
 	var card_instance: CardUI = card_ui_preload.instantiate()
-	ability_parent.add_child(card_instance)
+	card_parent_combat.add_child(card_instance)
 	card_instance.card = card;
 	return card_instance;
+	
+func set_ui_state():
+	if Manager.instance.player.is_in_combat:
+		card_parent_combat.visible = true;
+	else:
+		card_parent_combat.visible = false;

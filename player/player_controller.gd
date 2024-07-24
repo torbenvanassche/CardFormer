@@ -10,9 +10,14 @@ var hand: Hand = Hand.new();
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
 
+signal player_combat_changed();
+
 var current_triggers: Array[Node2D];
-var is_in_combat: bool = false;
 var sprite_flip_state: bool = false;
+var is_in_combat: bool = false:
+	set(value):
+		is_in_combat = value;
+		player_combat_changed.emit();
 
 func _init():
 	Manager.instance.player = self;

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SceneInfo" load_steps=3 format=3 uid="uid://2ncmgikg4fti"]
 
-[ext_resource type="PackedScene" uid="uid://xybxog28ksjh" path="res://scenes/main_menu.tscn" id="1_l5k36"]
+[ext_resource type="PackedScene" uid="uid://xybxog28ksjh" path="res://scenes/scenes/main_menu.tscn" id="1_l5k36"]
 [ext_resource type="Script" path="res://utils/resources/scene_info.gd" id="2_0x2wm"]
 
 [resource]

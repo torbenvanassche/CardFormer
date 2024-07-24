@@ -2,9 +2,13 @@ class_name Hand
 extends Node
 
 var cards: Array[Card];
+@export var hand_size: int = 3;
 
 func add_card(card: Card):
-	var slot: CardUI = GUI.instance.add_to_ui(card);
+	if is_full():
+		return false
+	
+	var slot: CardUI = GUI.instance.add_card(card);
 	slot.left_click.connect(try_use_ability.bind(card.data.type))
 	
 	slot.right_click.connect(card.flip)
@@ -15,6 +19,10 @@ func add_card(card: Card):
 	
 	if slot.has_method("on_enter"):
 		slot.on_enter();
+	return true;
+	
+func is_full() -> bool:
+	return cards.size() >= hand_size;
 
 func remove_ability(slot_index: int) -> void:
 	cards[slot_index].remove_script();
@@ -32,5 +40,5 @@ func try_use_ability(ability: String) -> Card:
 	else:
 		return null;
 		
-func has_ability(ability: String):
+func has_ability(ability: String) -> bool:
 	return cards.any(func(x: Card): return x.data.type == ability);
