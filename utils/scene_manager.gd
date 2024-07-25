@@ -80,7 +80,6 @@ func set_active_scene(scene_name: String, config: SceneConfig, set_on_stack: boo
 	if active_scene != null:
 		if set_on_stack:
 			scene_stack.append(node_to_info(active_scene))
-			print(node_to_info(active_scene).id + " added to stack.")
 		if active_scene.has_method("on_enable"):
 			active_scene.on_enable(config.custom_parameters)
 			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)

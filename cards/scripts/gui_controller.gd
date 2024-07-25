@@ -6,7 +6,7 @@ static var instance: GUI;
 var ability_slots: Array[CardUI];
 @onready var card_ui_preload = preload("res://cards/scenes/card_ui.tscn")
 @onready var text_box: Printer = $CanvasLayer/text_container/text_box;
-@export var deck_value: CustomAtlasTexture;
+@export var deck_value: CustomTextureRect;
 
 @export var card_parent_combat: Control;
 @export var card_parent_platformer: Control;
@@ -22,7 +22,7 @@ func _ready():
 	Manager.instance.player.deck.deck_changed.connect(_card_added_to_deck)
 
 func _card_added_to_deck():
-	deck_value.index = Manager.instance.player.deck.cards.size();
+	deck_value.indices.x = Manager.instance.player.deck.cards.size();
 
 func add_card(card: Card) -> CardUI:
 	var card_instance: CardUI = card_ui_preload.instantiate()

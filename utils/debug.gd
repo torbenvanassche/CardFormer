@@ -1,15 +1,15 @@
-extends Node
+class_name Debug extends Node
 
-var show_log: bool = true;
+static var show_log: bool = true;
 
-func message(s: String):
+static func message(s: String):
 	if show_log:
 		print(s);
 		
-func warn(s: String):
+static func warn(s: String):
 	if show_log:
 		push_warning(s);
 		
-func err(s: String):
+static func err(s: String):
 	if show_log:
 		printerr(s);
