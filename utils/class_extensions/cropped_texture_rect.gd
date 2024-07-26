@@ -2,11 +2,13 @@
 class_name CustomTextureRect extends Control
 
 @export var texture: Texture2D;
-@export var rect_size: Vector2i = Vector2i.ZERO;
-@export var indices: Vector2i = Vector2i.ZERO:
+@export var size_override_x: int = 50;
+@export var origin_rect: Rect2:
 	set(value):
-		indices = value
+		origin_rect = value
 		queue_redraw()
 
 func _draw():
-	draw_texture_rect_region(texture, Rect2(0, 0, size.x, size.y), Rect2(indices.x * rect_size.x, indices.y * rect_size.y, rect_size.x, rect_size.y))
+	size.x = size_override_x * origin_rect.size.x / origin_rect.size.y;
+	size.y = size.x * (origin_rect.size.y / origin_rect.size.x)
+	draw_texture_rect_region(texture, Rect2(0, 0, size.x, size.y), origin_rect)

@@ -87,10 +87,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_b0235")
 texture = ExtResource("5_7kef5")
-rect_size = Vector2i(18, 18)
+size_override_x = null
+origin_rect = null
 
 [node name="deck_counter_value2" type="Control" parent="CanvasLayer"]
-custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,7 +106,5 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_htom6")
 dictionary_path = "res://input_prompts/input_prompts.json"
-key = "backspace"
 texture = ExtResource("7_1728b")
-rect_size = Vector2i(32, 16)
-indices = Vector2i(32, 0)
+origin_rect = Rect2(272, 16, 16, 16)
