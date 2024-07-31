@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SceneInfo" load_steps=3 format=3 uid="uid://b8gf4f04f65cf"]
 
 [ext_resource type="PackedScene" uid="uid://cvjatgyu60w2e" path="res://scenes/scenes/battle_scene.tscn" id="1_hq8gy"]
-[ext_resource type="Script" path="res://utils/resources/scene_info.gd" id="2_53xuo"]
+[ext_resource type="Script" path="res://helpers/resources/scene_info.gd" id="2_53xuo"]
 
 [resource]
 script = ExtResource("2_53xuo")

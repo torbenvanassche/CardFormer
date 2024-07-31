@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://juw7ny6olbq7"]
 
-[ext_resource type="Script" path="res://utils/platformer.gd" id="1_e52xh"]
-[ext_resource type="Script" path="res://utils/camera.gd" id="2_fkbk6"]
-[ext_resource type="Script" path="res://utils/settings.gd" id="3_1t255"]
+[ext_resource type="Script" path="res://helpers/platformer.gd" id="1_e52xh"]
+[ext_resource type="Script" path="res://helpers/utils/camera.gd" id="2_fkbk6"]
+[ext_resource type="Script" path="res://helpers/utils/settings.gd" id="3_1t255"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="4_h67pe"]
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="5_vbwov"]
 [ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/flying_enemy.tscn" id="6_l4ukq"]

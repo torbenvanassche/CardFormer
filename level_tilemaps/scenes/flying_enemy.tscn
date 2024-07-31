@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level_tilemaps/scripts/enemy.gd" id="1_n1mse"]
 [ext_resource type="SpriteFrames" uid="uid://ccxe316pkrh8n" path="res://level_tilemaps/animations/flying_enemy.tres" id="1_ox45h"]
-[ext_resource type="Script" path="res://utils/health_bar.gd" id="3_1282k"]
+[ext_resource type="Script" path="res://helpers/utils/health_bar.gd" id="3_1282k"]
 [ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_7o6xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ge7x"]

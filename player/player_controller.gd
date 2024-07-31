@@ -9,6 +9,7 @@ var hand: Hand = Hand.new();
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
+var state_machine: StateMachine;
 
 signal player_combat_changed();
 
@@ -21,15 +22,24 @@ var is_in_combat: bool = false:
 
 func _init():
 	Manager.instance.player = self;
-
-# Called when the node enters the scene tree for the first time.
+	
+func _set_animation(s: String):
+	if player_sprite.sprite_frames.has_animation(s):
+		player_sprite.play(s)
+	
 func _ready():
 	player_trigger.area_entered.connect(_on_enter)
 	player_trigger.area_exited.connect(_on_leave)
+	
+	state_machine.new(player_sprite.sprite_frames.get_animation_names())
+	state_machine.state_entered.connect(_set_animation)
 
 func _on_enter(body: Node2D):
 	if !current_triggers.has(body):
 		current_triggers.push_back(body);
+		current_triggers.sort_custom(func(a: Node2D, b: Node2D): 
+			return global_position.distance_squared_to(a.global_position) > global_position.distance_squared_to(b.global_position));
+
 		if body.has_method("on_area_enter"):
 			body.on_area_enter();
 	

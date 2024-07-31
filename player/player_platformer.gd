@@ -32,9 +32,9 @@ func _process_platformer(delta: float):
 		
 	if direction != 0:
 		character_body.player_sprite.flip_h = direction > 0;
-		character_body.player_sprite.play("walk")
+		character_body.state_machine.current_state = "walk";
 	else:
-		character_body.player_sprite.stop()
+		character_body.state_machine.current_state = "idle";
 		
 	if Input.is_action_just_pressed("interact") && character_body.current_triggers.size() != 0:
 		interact();

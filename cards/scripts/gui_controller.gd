@@ -22,7 +22,8 @@ func _ready():
 	Manager.instance.player.deck.deck_changed.connect(_card_added_to_deck)
 
 func _card_added_to_deck():
-	deck_value.indices.x = Manager.instance.player.deck.cards.size();
+	var deck_size: int = Manager.instance.player.deck.cards.size();
+	deck_value.origin_rect = Rect2(deck_size * deck_value.sprite_size.x, 0, deck_value.sprite_size.x, deck_value.sprite_size.y)
 
 func add_card(card: Card) -> CardUI:
 	var card_instance: CardUI = card_ui_preload.instantiate()

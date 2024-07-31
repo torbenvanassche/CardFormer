@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SceneInfo" load_steps=3 format=3 uid="uid://cverr2kdqgstn"]
 
-[ext_resource type="Script" path="res://utils/resources/scene_info.gd" id="1_8msxd"]
+[ext_resource type="Script" path="res://helpers/resources/scene_info.gd" id="1_8msxd"]
 [ext_resource type="PackedScene" uid="uid://juw7ny6olbq7" path="res://scenes/scenes/platforming_scene.tscn" id="1_ujkw4"]
 
 [resource]
