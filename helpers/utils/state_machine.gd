@@ -1,6 +1,6 @@
 class_name StateMachine extends Node
 
-var states: Array[String] = [];
+var states: Array = [];
 var current_state: String:
 	set(value):
 		if current_state != value:
@@ -14,5 +14,5 @@ var current_state: String:
 signal state_entered(state: String);
 signal state_exited(state: String);
 
-func _init(_states: Array[String] = []):
+func _init(_states: Array = []):
 	states = _states;

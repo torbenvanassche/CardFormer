@@ -31,7 +31,7 @@ func _ready():
 	player_trigger.area_entered.connect(_on_enter)
 	player_trigger.area_exited.connect(_on_leave)
 	
-	state_machine.new(player_sprite.sprite_frames.get_animation_names())
+	state_machine = StateMachine.new(player_sprite.sprite_frames.get_animation_names())
 	state_machine.state_entered.connect(_set_animation)
 
 func _on_enter(body: Node2D):
