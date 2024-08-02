@@ -48,5 +48,4 @@ func set_inactive():
 	_indicator.visible = false;
 		
 func take_damage(amount: int):
-	print("target took " + str(amount))
 	health_bar.decrease_health(amount);

@@ -1,15 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsliqk4ja0rgt"]
+[gd_scene load_steps=11 format=3 uid="uid://bsliqk4ja0rgt"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_ptweb"]
 [ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="2_mbac0"]
 [ext_resource type="Texture2D" uid="uid://buoqt562jxbyr" path="res://emote_handler/emotes_pixel_style.png" id="3_teyap"]
 [ext_resource type="Script" path="res://emote_handler/emote_handler.gd" id="4_i5um0"]
+[ext_resource type="Script" path="res://helpers/utils/health_bar.gd" id="6_7biyr"]
 [ext_resource type="Script" path="res://player/player_platformer.gd" id="6_tevtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
 size = Vector2(20, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy73q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5wm6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7qjv"]
+bg_color = Color(0.64, 0.21376, 0.1664, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_ptweb")
@@ -40,3 +55,17 @@ dictionary_path = "res://emote_handler/emotes_lookup.json"
 script = ExtResource("6_tevtp")
 jump_velocity = -350.0
 speed = 160.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = -13.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_b5wm6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i7qjv")
+value = 98.0
+show_percentage = false
+
+[node name="HealthBar" type="Node" parent="ProgressBar"]
+script = ExtResource("6_7biyr")
