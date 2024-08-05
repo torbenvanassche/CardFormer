@@ -5,3 +5,5 @@ extends Resource
 @export var packed_scene:PackedScene
 @export var is_ui: bool = false;
 var node: Node;
+
+signal cached(scene_info: SceneInfo);

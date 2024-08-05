@@ -3,6 +3,7 @@ extends Node
 
 @export var scenes: Array[SceneInfo];
 var scene_stack: Array[SceneInfo] = [];
+var scene_cache: SceneCache = SceneCache.new();
 
 @export var initial_scene: SceneInfo;
 @export var ui_root: Node;
@@ -37,12 +38,11 @@ func get_or_create_scene(scene_name: String):
 		if is_instance_valid(scene_info.node):
 			return scene_info.node;
 		else:
-			var node = scene_info.packed_scene.instantiate();
+			var node = scene_cache.get_from_cache(scene_info);
 			if scene_info.is_ui:
-				ui_root.add_child(node)
+				ui_root.add_child(scene_info.node)
 			else:
-				add_child(node)
-			scene_info.node = node
+				add_child(scene_info.node)
 			return node;
 	else:
 		Debug.err(scene_name + " was invalid.")
