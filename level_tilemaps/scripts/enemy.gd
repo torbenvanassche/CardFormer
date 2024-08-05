@@ -26,7 +26,7 @@ func on_area_enter():
 
 #sub-handler for the collision for the platformer
 func _on_area_enter_platformer():
-	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, { "player": Manager.instance.player, "enemy": self }))
+	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, true, { "player": Manager.instance.player, "enemy": self }))
 
 func _on_combat_start():
 	health_bar.set_data(health_bar_ui)

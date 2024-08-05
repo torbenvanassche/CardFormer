@@ -11,7 +11,7 @@ func _init():
 	Manager.instance.orphan_timers.add_child(timer)
 	timer.start();
 
-func add(scene_info: SceneInfo):
+func queue(scene_info: SceneInfo):
 	loading_queue.append(scene_info);
 	var error = ResourceLoader.load_threaded_request(scene_info.packed_scene.resource_path, type_string(typeof(PackedScene)))
 	if error:
@@ -30,8 +30,8 @@ func get_from_cache(scene_info: SceneInfo) -> Node:
 	if cached_scenes.has(scene_info):
 		return cached_scenes[cached_scenes.find(scene_info)].node;
 	else:
-		scene_info.node = scene_info.packed_scene.instantiate();
-		return scene_info.node;
+		queue(scene_info)
+		return null;
 		
 func is_cached(scene_info: SceneInfo):
 	if loading_queue.has(scene_info) || cached_scenes.has(scene_info):
