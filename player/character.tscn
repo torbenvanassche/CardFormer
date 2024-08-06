@@ -53,8 +53,10 @@ dictionary_path = "res://emote_handler/emotes_lookup.json"
 
 [node name="platformer_controller" type="Node" parent="."]
 script = ExtResource("6_tevtp")
-jump_velocity = -350.0
 speed = 160.0
+jump_height = 50.0
+jump_time_to_peak = 0.35
+jump_time_to_descent = 0.2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -20.0

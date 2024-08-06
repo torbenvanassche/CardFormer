@@ -20,6 +20,7 @@ var is_in_combat: bool = false:
 	set(value):
 		is_in_combat = value;
 		player_combat_changed.emit();
+		health_bar.visible = is_in_combat;
 
 func _init():
 	Manager.instance.player = self;
