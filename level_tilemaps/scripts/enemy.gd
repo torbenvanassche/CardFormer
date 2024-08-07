@@ -1,8 +1,7 @@
 class_name Enemy
 extends Area2D
 
-@onready var health_bar: HealthBar = $ProgressBar/HealthBar;
-@onready var health_bar_ui: ProgressBar = $ProgressBar;
+@onready var health_bar: HealthBar = $HealthBar;
 @onready var _indicator: TextureRect = $indicator;
 
 signal clicked()
@@ -17,23 +16,22 @@ func _enter_tree():
 		_on_combat_start.call_deferred();
 		
 func _on_tree_enter_platformer():
-	health_bar_ui.visible = false;
+	pass
 
 #handles the collision event when the player collides with this object
 func on_area_enter():
-	if get_parent() is Platformer:
+	if not Manager.instance.player.is_in_combat:
 		_on_area_enter_platformer();
 
 #sub-handler for the collision for the platformer
 func _on_area_enter_platformer():
-	SceneManager.instance.set_active_scene("battle", SceneConfig.new(true, true, false, false, true, { "player": Manager.instance.player, "enemy": self }))
+	SceneManager.instance.set_active_scene("battle", SceneConfig.new(["platformer"], true, true, { "player": Manager.instance.player, "enemy": self }))
 
 func _on_combat_start():
-	health_bar.set_data(health_bar_ui)
+	health_bar.set_data()
 	health_bar.is_depleted.connect(func(): killed.emit())
 
 func execute():
-	print("enemy attack");
 	Manager.instance.battle_handler.turn_end.emit(self);
 	
 func _input_event(_viewport, event, _shape_idx):

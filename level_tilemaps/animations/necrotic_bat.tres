@@ -1,17 +1,17 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ccxe316pkrh8n"]
 
-[ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="1_j6x3k"]
+[ext_resource type="Texture2D" uid="uid://dp5ncmk4sm8xo" path="res://level_tilemaps/import/tilemap-characters.png" id="1_51am7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkjp5"]
-atlas = ExtResource("1_j6x3k")
+atlas = ExtResource("1_51am7")
 region = Rect2(150, 50, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02qf4"]
-atlas = ExtResource("1_j6x3k")
+atlas = ExtResource("1_51am7")
 region = Rect2(175, 50, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qgxm"]
-atlas = ExtResource("1_j6x3k")
+atlas = ExtResource("1_51am7")
 region = Rect2(200, 50, 24, 24)
 
 [resource]

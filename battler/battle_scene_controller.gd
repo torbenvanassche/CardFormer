@@ -54,4 +54,4 @@ func apply_options(options: Dictionary):
 	
 #sub-handler for the collision for the platformer
 func _on_combat_end():
-	SceneManager.instance.set_active_scene("platformer", SceneConfig.new(true, true, false, false, true, { "player": Manager.instance.player }))
+	SceneManager.instance.set_active_scene("platformer", SceneConfig.new([""], true, true, { "player": Manager.instance.player }))

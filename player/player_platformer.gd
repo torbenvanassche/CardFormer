@@ -2,21 +2,24 @@ class_name PlatformerPlayer
 extends Node
 
 @onready var character_body: PlayerController = $".."
-var current_jump_timer: float = 0;
-var jump_pressed_not_on_ground: bool = false;
 @export var speed: float = 150.0;
 
 @export_group("Jump")
 @export var jump_height : float = 100
 @export var jump_time_to_peak : float = 0.5
 @export var jump_time_to_descent : float = 0.3
-@export var jump_grace_period: float = 0.1;
-@export var jump_coyote_time: float = 0.1
+var jump_grace_period: float = 0.1;
+var jump_coyote_time: float = 0.1
 
 @onready var jump_velocity : float = -((2.0 * jump_height) / jump_time_to_peak)
 @onready var jump_gravity : float = ((2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak))
 @onready var fall_gravity : float = ((2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent))
 @onready var jump_coyote_default_time: float = jump_coyote_time
+@onready var _initial_jump_cooldown := _jump_cooldown
+var jump_pressed_not_on_ground: bool = false;
+var current_jump_timer: float = 0;
+var _jump_cooldown := 10;
+var _can_jump := true;
 
 var _gravity: float:
 	get:
@@ -25,6 +28,12 @@ var _gravity: float:
 func _process_platformer(delta: float):
 	if jump_pressed_not_on_ground:
 		current_jump_timer += delta;
+		
+	if not _can_jump:
+		_jump_cooldown -= delta;
+		if _jump_cooldown <= 0:
+			_can_jump = true;
+			
 		
 	var jump_coyote := false;
 	var jump_buffer := false;
@@ -38,9 +47,8 @@ func _process_platformer(delta: float):
 		if Input.is_action_just_pressed("jump"):
 			jump();
 			
-	jump_buffer = current_jump_timer < jump_grace_period and jump_pressed_not_on_ground;
-	if jump_buffer || jump_coyote:
-		print("jumping")
+	jump_buffer = current_jump_timer < jump_grace_period and jump_pressed_not_on_ground and character_body.is_on_floor();
+	if (jump_buffer || jump_coyote):
 		jump()
 
 	var direction = Input.get_axis("left", "right")
@@ -68,9 +76,14 @@ func _physics_process(delta):
 	character_body.move_and_slide()
 	
 func jump():
+	if not _can_jump:
+		return
+	
 	character_body.velocity.y = jump_velocity
+	_jump_cooldown = _initial_jump_cooldown;
 	jump_pressed_not_on_ground = false;
 	current_jump_timer = 0;
+	_can_jump = false;
 	
 func interact():	
 	character_body.current_triggers.sort_custom(func(a: Node2D, b: Node2D): 

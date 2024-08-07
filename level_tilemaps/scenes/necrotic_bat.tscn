@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://rs5nt4pljhpf"]
 
-[ext_resource type="Script" path="res://level_tilemaps/scripts/enemy.gd" id="1_n1mse"]
-[ext_resource type="SpriteFrames" uid="uid://ccxe316pkrh8n" path="res://level_tilemaps/animations/flying_enemy.tres" id="1_ox45h"]
-[ext_resource type="Script" path="res://helpers/utils/health_bar.gd" id="3_1282k"]
-[ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_7o6xq"]
+[ext_resource type="Script" path="res://level_tilemaps/scripts/enemy.gd" id="1_8jl76"]
+[ext_resource type="SpriteFrames" uid="uid://ccxe316pkrh8n" path="res://level_tilemaps/animations/necrotic_bat.tres" id="2_bflao"]
+[ext_resource type="Script" path="res://helpers/utils/health_bar.gd" id="3_8aq5h"]
+[ext_resource type="Texture2D" uid="uid://cvjhjxro34uql" path="res://input_prompts/tilemap.png" id="4_b8yma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ge7x"]
 size = Vector2(24, 10)
@@ -23,23 +23,24 @@ border_width_top = 1
 border_width_bottom = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mpts"]
-atlas = ExtResource("4_7o6xq")
+atlas = ExtResource("4_b8yma")
 region = Rect2(420.105, 260.104, 7.97272, 7.70245)
 
 [node name="Node2D" type="Area2D"]
-script = ExtResource("1_n1mse")
+script = ExtResource("1_8jl76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_7ge7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_ox45h")
+sprite_frames = ExtResource("2_bflao")
 autoplay = "default"
 frame = 1
 frame_progress = 0.212457
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -15.0
 offset_right = 20.0
@@ -49,9 +50,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_k5gs2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bj7ex")
 value = 98.0
 show_percentage = false
-
-[node name="HealthBar" type="Node" parent="ProgressBar"]
-script = ExtResource("3_1282k")
+script = ExtResource("3_8aq5h")
 
 [node name="indicator" type="TextureRect" parent="."]
 visible = false

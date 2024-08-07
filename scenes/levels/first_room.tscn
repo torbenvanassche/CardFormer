@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://helpers/utils/camera.gd" id="2_vwgg6"]
 [ext_resource type="Script" path="res://helpers/utils/settings.gd" id="3_4wd4x"]
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="4_b2pge"]
+[ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/necrotic_bat.tscn" id="5_c81mc"]
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="5_kjouo"]
-[ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/flying_enemy.tscn" id="6_rj8xc"]
 [ext_resource type="PackedScene" uid="uid://b4qhbrrj8p7h0" path="res://cards/scenes/card.tscn" id="7_g86di"]
 [ext_resource type="Script" path="res://cards/card_functions/attack_card.gd" id="8_j0vhr"]
 [ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="9_yan7x"]
@@ -43,10 +43,10 @@ settings_profile = SubResource("Resource_glrhp")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_b2pge")
 format = 2
-layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 196616, 0, 131069, 131080, 0, 131066, 131080, 0, 131065, 65544, 0, 131067, 131080, 0, 131068, 131080, 0, -65536, 65544, 1, -65535, 196616, 1, 65536, 65544, 7, 1, 196616, 6, 65537, 196616, 7, -196614, 524296, 2, -196613, 589832, 2, -196612, 655368, 2, 65531, 524296, 4, 0, 65544, 6)
+layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 196616, 0, 131069, 131080, 0, 131066, 131080, 0, 131065, 65544, 0, 131067, 131080, 0, 131068, 131080, 0, -65536, 65544, 1, -65535, 196616, 1, 65536, 65544, 7, 1, 196616, 6, 65537, 196616, 7, 65531, 524296, 4, 0, 65544, 6, -131078, 524296, 2, -131077, 589832, 2, -131076, 655368, 2)
 
-[node name="flying_enemy" parent="TileMap" instance=ExtResource("6_rj8xc")]
-position = Vector2(-83, -131)
+[node name="necrotic_bat" parent="TileMap" instance=ExtResource("5_c81mc")]
+position = Vector2(-83, -103)
 
 [node name="card" parent="TileMap" instance=ExtResource("7_g86di")]
 position = Vector2(18, -39)

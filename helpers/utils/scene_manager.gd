@@ -16,7 +16,7 @@ signal scene_exited(scene: Node)
 func _ready():
 	SceneManager.instance = self;
 	scene_cache = SceneCache.new()
-	set_active_scene(initial_scene.id, SceneConfig.new(true, true, true))
+	set_active_scene(initial_scene.id, SceneConfig.new([""], true))
 
 var active_scene: Node:
 	get: return active_scene;
@@ -87,11 +87,13 @@ func set_active_scene(scene_name: String, config: SceneConfig):
 			return; 
 		if config.disable_processing:
 			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
-		if config.hide_current:
-			active_scene.visible = false;
+		for hidden_item in config.hide_list:
+			var to_hide: SceneInfo = get_scene_info(hidden_item)
+			if to_hide.node != null:
+				to_hide.node.visible = false;
 		if config.free_current: 
 			previous_scene_info.node.queue_free() 
-	get_or_create_scene(scene_name)
+	get_or_create_scene(scene_name, config)
 	
 func reset_to_scene(scene_name: String):
 	for sceneInfo in scenes:
@@ -99,10 +101,10 @@ func reset_to_scene(scene_name: String):
 			sceneInfo.node.queue_free()
 	set_active_scene(scene_name, SceneConfig.new())
 		
-func to_previous_scene(hide_current: bool = false, stop_processing_current: bool = false, remove_current: bool = false):
+func to_previous_scene(stop_processing_current: bool = false, remove_current: bool = false):
 	if scene_stack.size() != 0:
 		scene_stack.pop_back();
-		set_active_scene(scene_stack[scene_stack.size() - 1].id, SceneConfig.new(hide_current, stop_processing_current, remove_current, false));
+		set_active_scene(scene_stack[scene_stack.size() - 1].id, SceneConfig.new([], stop_processing_current));
 		
 func ui_is_open(exceptions: Array[String] = ["pause"]) -> bool:
 	return get_children().all(func(x: Node): return node_to_info(x).is_ui && x.visible && !exceptions.has(node_to_info(x).id));

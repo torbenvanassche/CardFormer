@@ -26,7 +26,7 @@ func _unhandled_input(event):
 func pause(pause_game = !get_tree().paused):
 	get_tree().paused = pause_game
 	if pause_game:
-		SceneManager.instance.set_active_scene("paused", SceneConfig.new(false));
+		SceneManager.instance.set_active_scene("paused", SceneConfig.new());
 		
 func _process(_delta):
 	if Input.is_action_just_pressed("jump"):

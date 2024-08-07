@@ -58,7 +58,8 @@ jump_height = 50.0
 jump_time_to_peak = 0.3
 jump_time_to_descent = 0.25
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -18.0
 offset_right = 20.0
@@ -68,6 +69,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_b5wm6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i7qjv")
 value = 98.0
 show_percentage = false
-
-[node name="HealthBar" type="Node" parent="ProgressBar"]
 script = ExtResource("6_7biyr")

@@ -7,6 +7,6 @@ extends CanvasLayer
 @onready var quit_button: Button = $Buttons/VBoxContainer/quit;
 	
 func _ready():
-	new_game_button.pressed.connect(SceneManager.instance.set_active_scene.bind("platformer", SceneConfig.new(false, true, true)))
+	new_game_button.pressed.connect(SceneManager.instance.set_active_scene.bind("platformer", SceneConfig.new(["main_menu"], true)))
 	quit_button.pressed.connect(get_tree().quit)
 	pass

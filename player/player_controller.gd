@@ -7,7 +7,7 @@ var hand: Hand = Hand.new();
 
 @onready var platforming_controller: PlatformerPlayer = $"platformer_controller"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite;
-@onready var health_bar: HealthBar = $ProgressBar/HealthBar;
+@onready var health_bar: HealthBar = $HealthBar;
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
 var state_machine: StateMachine;
@@ -35,8 +35,6 @@ func _ready():
 	
 	state_machine = StateMachine.new(player_sprite.sprite_frames.get_animation_names())
 	state_machine.state_entered.connect(_set_animation)
-	
-	health_bar.health_ui = $ProgressBar;
 
 func _on_enter(body: Node2D):
 	if !current_triggers.has(body):
