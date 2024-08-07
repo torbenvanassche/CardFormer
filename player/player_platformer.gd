@@ -2,42 +2,46 @@ class_name PlatformerPlayer
 extends Node
 
 @onready var character_body: PlayerController = $".."
-var jump_grace_period: float = 0.1;
 var current_jump_timer: float = 0;
 var jump_pressed_not_on_ground: bool = false;
 @export var speed: float = 150.0;
 
-#jump
+@export_group("Jump")
 @export var jump_height : float = 100
 @export var jump_time_to_peak : float = 0.5
 @export var jump_time_to_descent : float = 0.3
+@export var jump_grace_period: float = 0.1;
+@export var jump_coyote_time: float = 0.1
 
-@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+@onready var jump_velocity : float = -((2.0 * jump_height) / jump_time_to_peak)
+@onready var jump_gravity : float = ((2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak))
+@onready var fall_gravity : float = ((2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent))
+@onready var jump_coyote_default_time: float = jump_coyote_time
 
-var _jumped: bool = false;
-
-func _get_gravity() -> float:
-	if character_body.velocity.y >= 0 and Input.is_action_pressed("jump"):
-		return ((2.0 * jump_height) / (jump_time_to_peak ** 2))
-	else:
-		pass
-		_jumped = false
-		return ((2.0 * jump_height) / (jump_time_to_peak ** 2))
+var _gravity: float:
+	get:
+		return jump_gravity if character_body.velocity.y < 0.0 else fall_gravity
 
 func _process_platformer(delta: float):
-	if Input.is_action_just_pressed("jump"):
-		if character_body.is_on_floor():
-			jump()
-		else:
-			jump_pressed_not_on_ground = true;
-	
 	if jump_pressed_not_on_ground:
 		current_jump_timer += delta;
 		
-	if character_body.is_on_floor() and current_jump_timer < jump_grace_period and jump_pressed_not_on_ground:
-		jump();
+	var jump_coyote := false;
+	var jump_buffer := false;
+	if not character_body.is_on_floor():
+		jump_coyote_time -= delta;
+		if Input.is_action_just_pressed("jump"):
+			jump_pressed_not_on_ground = true;
+			jump_coyote = jump_coyote_time > 0;
+	else:
+		jump_coyote_time = jump_coyote_default_time
+		if Input.is_action_just_pressed("jump"):
+			jump();
+			
+	jump_buffer = current_jump_timer < jump_grace_period and jump_pressed_not_on_ground;
+	if jump_buffer || jump_coyote:
+		print("jumping")
+		jump()
 
 	var direction = Input.get_axis("left", "right")
 	if direction:
@@ -56,7 +60,7 @@ func _process_platformer(delta: float):
 
 func _physics_process(delta):
 	if not character_body.is_on_floor():
-		character_body.velocity.y += _get_gravity() * delta;
+		character_body.velocity.y += _gravity * delta;
 		
 	if not character_body.is_in_combat:
 		_process_platformer(delta)
