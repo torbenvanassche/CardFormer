@@ -34,8 +34,11 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_orq67")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22)
 sprite_frames = ExtResource("2_mbac0")
-animation = &"idle"
+animation = &"jump"
+frame = 2
+frame_progress = 1.0
 
 [node name="player_trigger" type="Area2D" parent="."]
 
@@ -44,7 +47,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vy73q")
 
 [node name="emote_handler" type="Sprite2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -46)
 texture = ExtResource("3_teyap")
 hframes = 10
 vframes = 3
