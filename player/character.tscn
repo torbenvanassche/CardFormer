@@ -36,9 +36,9 @@ shape = SubResource("RectangleShape2D_orq67")
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -22)
 sprite_frames = ExtResource("2_mbac0")
-animation = &"jump"
-frame = 2
-frame_progress = 1.0
+animation = &"walk_R"
+frame = 6
+frame_progress = 0.55318
 
 [node name="player_trigger" type="Area2D" parent="."]
 
