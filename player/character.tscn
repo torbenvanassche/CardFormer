@@ -8,10 +8,9 @@
 [ext_resource type="Script" path="res://player/player_platformer.gd" id="6_tevtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
-size = Vector2(20, 48)
+size = Vector2(20, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vy73q"]
-size = Vector2(24, 50)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5wm6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -31,21 +30,24 @@ border_width_bottom = 1
 script = ExtResource("1_ptweb")
 
 [node name="player_collider" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 7)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_orq67")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -22)
 sprite_frames = ExtResource("2_mbac0")
-animation = &"idle"
+animation = &"jump"
+frame = 2
+frame_progress = 1.0
 
 [node name="player_trigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_trigger"]
-position = Vector2(-1, 6)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vy73q")
 
 [node name="emote_handler" type="Sprite2D" parent="."]
-position = Vector2(0, -33)
+position = Vector2(0, -46)
 texture = ExtResource("3_teyap")
 hframes = 10
 vframes = 3
@@ -60,10 +62,11 @@ jump_time_to_peak = 0.3
 jump_time_to_descent = 0.25
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -20.0
-offset_top = -23.0
+offset_top = -18.0
 offset_right = 20.0
-offset_bottom = -18.0
+offset_bottom = -13.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_b5wm6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i7qjv")
