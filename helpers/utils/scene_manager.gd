@@ -101,7 +101,7 @@ func reset_to_scene(scene_name: String):
 			sceneInfo.node.queue_free()
 	set_active_scene(scene_name, SceneConfig.new())
 		
-func to_previous_scene(stop_processing_current: bool = false, remove_current: bool = false):
+func to_previous_scene(stop_processing_current: bool = false, _remove_current: bool = false):
 	if scene_stack.size() != 0:
 		scene_stack.pop_back();
 		set_active_scene(scene_stack[scene_stack.size() - 1].id, SceneConfig.new([], stop_processing_current));

@@ -9,10 +9,9 @@ signal killed()
 
 #called when the node enters the tree, this also gets called when reparenting for the combat scene
 func _enter_tree():
-	var parent: Node = get_parent();
-	if parent is Platformer:
+	if not Manager.instance.player.is_in_combat:
 		_on_tree_enter_platformer.call_deferred()
-	if parent is Battler:
+	else:
 		_on_combat_start.call_deferred();
 		
 func _on_tree_enter_platformer():

@@ -18,7 +18,7 @@ var jump_coyote_time: float = 0.1
 @onready var _initial_jump_cooldown := _jump_cooldown
 var jump_pressed_not_on_ground: bool = false;
 var current_jump_timer: float = 0;
-var _jump_cooldown := 10;
+var _jump_cooldown := 10.0;
 var _can_jump := true;
 
 var _gravity: float:

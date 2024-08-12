@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2edjlwcmrlfr"]
 
-[ext_resource type="Texture2D" uid="uid://ko6kjk1cymt3" path="res://level_tilemaps/import/tilemap_base.png" id="1_q2gjo"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mls1t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7v8ap"]
-atlas = ExtResource("1_q2gjo")
+atlas = SubResource("CompressedTexture2D_mls1t")
 region = Rect2(200.641, 128.673, 12.432, 12.7023)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_443de"]
