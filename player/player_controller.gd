@@ -55,3 +55,4 @@ func set_combat_state(in_combat: bool):
 		velocity = Vector2()
 	is_in_combat = in_combat;
 	player_sprite.flip_h = true;
+	player_sprite.animation = "idle"
