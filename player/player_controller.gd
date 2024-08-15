@@ -15,7 +15,7 @@ var state_machine: StateMachine;
 signal player_combat_changed();
 
 var current_triggers: Array[Node2D];
-var sprite_flip_state: bool = false;
+var sprite_flip_state: bool = true;
 var is_in_combat: bool = false:
 	set(value):
 		is_in_combat = value;
@@ -54,5 +54,5 @@ func set_combat_state(in_combat: bool):
 	if in_combat:
 		velocity = Vector2()
 	is_in_combat = in_combat;
-	player_sprite.flip_h = true;
-	player_sprite.animation = "idle"
+	player_sprite.flip_h = false;
+	player_sprite.animation = "attack_idle"

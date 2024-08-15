@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://x8515x0hvs6"]
 
-[ext_resource type="Texture2D" uid="uid://cd5e1r7ovvevb" path="res://player/Sprites/player-Sheet.png" id="1_jra3c"]
+[ext_resource type="Texture2D" uid="uid://d0yo4tconwqvh" path="res://player/Sprites/player-Sheet.png" id="1_jra3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pw65k"]
 atlas = ExtResource("1_jra3c")
@@ -103,7 +103,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_urq22")
 }],
 "loop": true,
-"name": &"battleIdle",
+"name": &"attack_idle",
 "speed": 5.0
 }, {
 "frames": [{

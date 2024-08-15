@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://o5hk4ycslrdp"]
+[gd_scene load_steps=9 format=3 uid="uid://o5hk4ycslrdp"]
 
 [ext_resource type="Script" path="res://helpers/utils/game_manager.gd" id="1_8ydbg"]
 [ext_resource type="Script" path="res://helpers/utils/scene_manager.gd" id="2_fjrpo"]
+[ext_resource type="Script" path="res://helpers/resources/scene_info.gd" id="3_qlb21"]
 [ext_resource type="Resource" uid="uid://b8gf4f04f65cf" path="res://scenes/scene_infos/battle.tres" id="3_s2ovh"]
 [ext_resource type="Resource" uid="uid://2ncmgikg4fti" path="res://scenes/scene_infos/main_menu.tres" id="4_a61ae"]
 [ext_resource type="Resource" uid="uid://cw1exi0jk6hbw" path="res://scenes/scene_infos/paused.tres" id="5_yhp07"]
@@ -14,7 +15,7 @@ orphan_timers = NodePath("timer_orphanage")
 
 [node name="scene_manager" type="Node" parent="." node_paths=PackedStringArray("ui_root")]
 script = ExtResource("2_fjrpo")
-scenes = Array[Resource("res://helpers/resources/scene_info.gd")]([ExtResource("3_s2ovh"), ExtResource("4_a61ae"), ExtResource("5_yhp07"), ExtResource("6_3as3t"), ExtResource("7_foor0")])
+scenes = Array[ExtResource("3_qlb21")]([ExtResource("3_s2ovh"), ExtResource("4_a61ae"), ExtResource("5_yhp07"), ExtResource("6_3as3t"), ExtResource("7_foor0")])
 initial_scene = ExtResource("4_a61ae")
 ui_root = NodePath("../ui_manager")
 
