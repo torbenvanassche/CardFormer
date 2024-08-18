@@ -58,6 +58,6 @@ func flip():
 	card_background.texture = card_front if card.is_front else card_back;
 	
 func destroy():
-	card.cooldown_timer.timeout.disconnect(_reset_overlay())
+	card.cooldown_timer.timeout.disconnect(_reset_overlay)
 	internal_sprite.visible = false
 	cooldown_overlay.visible = false;

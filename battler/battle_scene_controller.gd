@@ -50,8 +50,8 @@ func apply_options(options: Dictionary):
 		typed_enemy.global_position = enemy_position.global_position;
 		typed_enemy.clicked.connect(func(): target = typed_enemy);
 		typed_enemy.killed.connect(Manager.instance.battle_handler.remove_participants.bind(typed_enemy))
-	target = enemies[0]
+	target = enemies.pick_random()
 	
 #sub-handler for the collision for the platformer
 func _on_combat_end():
-	SceneManager.instance.set_active_scene("platformer", SceneConfig.new([""], true, true, { "player": Manager.instance.player }))
+	SceneManager.instance.set_active_scene("platformer", SceneConfig.new(["battle"], true, true, { "player": Manager.instance.player }))

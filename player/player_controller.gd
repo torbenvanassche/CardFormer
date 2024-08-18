@@ -5,6 +5,7 @@ extends CharacterBody2D
 var deck: Deck = Deck.new();
 var hand: Hand = Hand.new();
 
+@onready var projectile_location: Node2D = $player_sprite/projectile_location;
 @onready var platforming_controller: PlatformerPlayer = $"platformer_controller"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite;
 @onready var health_bar: HealthBar = $HealthBar;
@@ -25,16 +26,11 @@ var is_in_combat: bool = false:
 func _init():
 	Manager.instance.player = self;
 	
-func _set_animation(s: String):
-	if player_sprite.sprite_frames.has_animation(s):
-		player_sprite.play(s)
-	
 func _ready():
 	player_trigger.area_entered.connect(_on_enter)
 	player_trigger.area_exited.connect(_on_leave)
 	
-	state_machine = StateMachine.new(player_sprite.sprite_frames.get_animation_names())
-	state_machine.state_entered.connect(_set_animation)
+	state_machine = AnimationStateMachine.new(player_sprite)
 
 func _on_enter(body: Node2D):
 	if !current_triggers.has(body):

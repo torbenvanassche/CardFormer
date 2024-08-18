@@ -37,7 +37,11 @@ shape = SubResource("RectangleShape2D_orq67")
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("2_mbac0")
-animation = &"attack_idle"
+animation = &"attack_ranged"
+frame = 4
+
+[node name="projectile_location" type="Node2D" parent="player_sprite"]
+position = Vector2(19, 4)
 
 [node name="player_trigger" type="Area2D" parent="."]
 

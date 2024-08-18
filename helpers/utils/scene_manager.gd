@@ -38,6 +38,7 @@ func get_or_create_scene(scene_name: String, scene_config: SceneConfig = SceneCo
 	elif filtered.size() == 1:
 		var scene_info: SceneInfo = filtered[0];
 		if is_instance_valid(scene_info.node):
+			_on_scene_load(scene_info, scene_config);
 			return scene_info.node;
 		else:
 			load_in_progress = true;
@@ -52,10 +53,11 @@ func _on_scene_load(scene_info: SceneInfo, scene_config: SceneConfig):
 	load_in_progress = false;
 	if scene_info.is_ui:
 		ui_root.add_child(scene_info.node)
-	else:
-		add_child(scene_info.node)	
+	elif not scene_info.node.get_parent():
+		add_child(scene_info.node)
 	active_scene = scene_info.node;
 	if active_scene != null:
+		active_scene.visible = true;
 		if scene_config.add_to_stack:
 			scene_stack.append(node_to_info(active_scene))
 		if active_scene.has_method("on_enable"):
@@ -89,7 +91,7 @@ func set_active_scene(scene_name: String, config: SceneConfig):
 			active_scene.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 		for hidden_item in config.hide_list:
 			var to_hide: SceneInfo = get_scene_info(hidden_item)
-			if to_hide.node != null:
+			if to_hide != null && to_hide.node != null:
 				to_hide.node.visible = false;
 		if config.free_current: 
 			previous_scene_info.node.queue_free() 

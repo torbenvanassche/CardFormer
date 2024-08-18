@@ -3,6 +3,7 @@ extends ProgressBar
 
 @export var max_health: int = 100;
 @export var current_health: int = 100;
+var time_to_depletion: float = 0.5;
 
 signal is_depleted()
 
@@ -17,10 +18,11 @@ func set_data(curr_health: int = max_health):
 
 func decrease_health(amount: int):
 	current_health -= amount;
-	value = current_health;
+	create_tween().tween_property(self, "value", current_health, time_to_depletion).finished.connect(check_alive)
 	
-	if current_health <= 0:
-		is_depleted.emit()
+func check_alive():
+	if not is_alive():
+		is_depleted.emit();
 		
 func is_alive():
 	return current_health > 0;

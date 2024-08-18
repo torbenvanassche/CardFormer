@@ -14,12 +14,11 @@ func _init(participants: Array[Node] = []):
 	_participants = participants
 	_participants.shuffle()
 	
-	turn_end.connect(to_next)	
+	turn_end.connect(to_next)
 	to_next.call_deferred(_participants[_current_participant_index])
 	
 func to_next(_n: Node):
-	if _participants.size() == 1 && _participants[0] is PlayerController:
-		combat_end.emit();
+	if has_combat_ended():
 		return;
 	
 	var curr_participant = _participants[_current_participant_index];
@@ -33,10 +32,19 @@ func to_next(_n: Node):
 	
 	if curr_participant.has_method("execute"):
 		curr_participant.execute();
+		
+func has_combat_ended() -> bool:
+	if _participants.size() == 1 && _participants[0] is PlayerController:
+		combat_end.emit();
+		return true;
+	return false;
 
 func remove_participants(n: Node):
 	_participants.erase(n);
 	n.queue_free();
 	
+	if has_combat_ended():
+		return;
+	
 	if _current_participant_index >= _participants.size():
-		_current_participant_index = 0;
+		_current_participant_index = _participants.size() - 1;
