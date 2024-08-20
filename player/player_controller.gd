@@ -2,15 +2,15 @@ class_name PlayerController
 extends CharacterBody2D
 
 #Player data stuff
-var deck: Deck = Deck.new();
-var hand: Hand = Hand.new();
-
 @onready var projectile_location: Node2D = $player_sprite/projectile_location;
 @onready var platforming_controller: PlatformerPlayer = $"platformer_controller"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite;
 @onready var health_bar: HealthBar = $HealthBar;
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
+@onready var deck: Deck = $Hand;
+@onready var hand: Hand = $Deck;
+	
 var state_machine: StateMachine;
 
 signal player_combat_changed();

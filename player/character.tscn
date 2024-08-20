@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsliqk4ja0rgt"]
+[gd_scene load_steps=13 format=3 uid="uid://bsliqk4ja0rgt"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_ptweb"]
 [ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="2_mbac0"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://emote_handler/emote_handler.gd" id="4_i5um0"]
 [ext_resource type="Script" path="res://helpers/utils/health_bar.gd" id="6_7biyr"]
 [ext_resource type="Script" path="res://player/player_platformer.gd" id="6_tevtp"]
+[ext_resource type="Script" path="res://cards/scripts/hand.gd" id="7_q2is1"]
+[ext_resource type="Script" path="res://cards/scripts/deck.gd" id="8_o7wbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
 size = Vector2(9, 19)
@@ -77,3 +79,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_i7qjv")
 value = 98.0
 show_percentage = false
 script = ExtResource("6_7biyr")
+
+[node name="Hand" type="Node" parent="."]
+script = ExtResource("7_q2is1")
+hand_size = 4
+
+[node name="Deck" type="Node" parent="."]
+script = ExtResource("8_o7wbk")
