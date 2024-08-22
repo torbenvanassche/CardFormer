@@ -8,8 +8,8 @@ extends CharacterBody2D
 @onready var health_bar: HealthBar = $HealthBar;
 @onready var emote_handler: EmoteHandler = $emote_handler;
 @onready var player_trigger: Area2D = $player_trigger;
-@onready var deck: Deck = $Hand;
-@onready var hand: Hand = $Deck;
+@onready var deck: Deck = $Deck;
+@onready var hand: Hand = $Hand;
 	
 var state_machine: StateMachine;
 

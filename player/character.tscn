@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsliqk4ja0rgt"]
+[gd_scene load_steps=15 format=3 uid="uid://bsliqk4ja0rgt"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_ptweb"]
 [ext_resource type="SpriteFrames" uid="uid://x8515x0hvs6" path="res://player/player_animations.tres" id="2_mbac0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://player/player_platformer.gd" id="6_tevtp"]
 [ext_resource type="Script" path="res://cards/scripts/hand.gd" id="7_q2is1"]
 [ext_resource type="Script" path="res://cards/scripts/deck.gd" id="8_o7wbk"]
+[ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="9_xacjx"]
+[ext_resource type="Resource" uid="uid://bdhtci5rwclba" path="res://cards/resources/neutral_attack.tres" id="10_2w4r7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_orq67"]
 size = Vector2(9, 19)
@@ -86,3 +88,4 @@ hand_size = 4
 
 [node name="Deck" type="Node" parent="."]
 script = ExtResource("8_o7wbk")
+initial_cards = Array[ExtResource("9_xacjx")]([ExtResource("10_2w4r7"), ExtResource("10_2w4r7"), ExtResource("10_2w4r7"), ExtResource("10_2w4r7")])

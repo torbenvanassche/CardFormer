@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://juw7ny6olbq7"]
+[gd_scene load_steps=8 format=3 uid="uid://juw7ny6olbq7"]
 
 [ext_resource type="Script" path="res://helpers/platformer.gd" id="1_lwwk5"]
 [ext_resource type="Script" path="res://helpers/utils/camera.gd" id="2_vwgg6"]
@@ -6,9 +6,6 @@
 [ext_resource type="TileSet" uid="uid://b3dtn7fk4thvk" path="res://level_tilemaps/level_creator.tres" id="4_b2pge"]
 [ext_resource type="PackedScene" uid="uid://rs5nt4pljhpf" path="res://level_tilemaps/scenes/necrotic_bat.tscn" id="5_c81mc"]
 [ext_resource type="PackedScene" uid="uid://bsliqk4ja0rgt" path="res://player/character.tscn" id="5_kjouo"]
-[ext_resource type="PackedScene" uid="uid://b4qhbrrj8p7h0" path="res://cards/scenes/card.tscn" id="7_g86di"]
-[ext_resource type="Script" path="res://cards/card_functions/neutral_attack_card.gd" id="8_j0vhr"]
-[ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="9_yan7x"]
 
 [sub_resource type="Resource" id="Resource_glrhp"]
 script = ExtResource("3_4wd4x")
@@ -16,15 +13,6 @@ camera_zoom_sensitivity = 0.1
 camera_follow_speed = 1
 close_context_on_mouse_exit = true
 master_volume = 1.0
-
-[sub_resource type="Resource" id="Resource_faymy"]
-script = ExtResource("9_yan7x")
-sprite_frame = 0
-exec_script = ExtResource("8_j0vhr")
-cooldown = 1.0
-single_use = false
-respawn_after_use = false
-type = "attack"
 
 [node name="platforming" type="Node2D" node_paths=PackedStringArray("tilemap", "camera")]
 script = ExtResource("1_lwwk5")
@@ -46,11 +34,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(131070, 131080, 0, 131071, 196616, 0, 131069, 131080, 0, 131066, 131080, 0, 131065, 65544, 0, 131067, 131080, 0, 131068, 131080, 0, -65536, 65544, 1, -65535, 196616, 1, 65536, 65544, 7, 1, 196616, 6, 65537, 196616, 7, 65531, 524296, 4, 0, 65544, 6, -131078, 524296, 2, -131077, 589832, 2, -131076, 655368, 2)
 
 [node name="necrotic_bat" parent="TileMap" instance=ExtResource("5_c81mc")]
-position = Vector2(-83, -103)
-
-[node name="card" parent="TileMap" instance=ExtResource("7_g86di")]
-position = Vector2(18, -39)
-card_data = SubResource("Resource_faymy")
+position = Vector2(-81, -85)
 
 [node name="Character" parent="." instance=ExtResource("5_kjouo")]
 position = Vector2(-105, 8)

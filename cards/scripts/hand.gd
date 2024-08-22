@@ -1,7 +1,7 @@
 class_name Hand
 extends Node
 
-var cards: Array[Card];
+var card_container: Array[CardUI];
 @export var hand_size: int = 3;
 
 func add_card(card: Card):
@@ -9,12 +9,12 @@ func add_card(card: Card):
 		return false
 	
 	var slot: CardUI = GUI.instance.add_card(card);
-	slot.left_click.connect(try_use_ability.bind(card.data.type))
+	slot.left_click.connect(try_use_ability.bind(slot))
 	
 	slot.right_click.connect(card.flip)
 	slot.right_click.connect(slot.flip)
 	
-	cards.append(card);
+	card_container.append(slot);
 	add_child(card)
 	
 	if slot.has_method("on_enter"):
@@ -22,23 +22,23 @@ func add_card(card: Card):
 	return true;
 	
 func is_full() -> bool:
-	return cards.size() >= hand_size;
+	return card_container.size() >= hand_size;
 
 func remove_ability(slot_index: int) -> void:
-	cards[slot_index].remove_script();
+	card_container[slot_index].remove_script();
 	
 func remove_all_abilities() -> void:
-	for card in cards:
+	for card in card_container:
 		card.queue_free();
-	cards.clear();
+	card_container.clear();
 		
-func try_use_ability(ability: String) -> Card:
-	var filtered: Array[Card] = cards.filter(func(x: Card): return x.data.type == ability);
-	if filtered.size() != 0 && filtered[0].has_method("execute") && filtered[0].can_use:
-		filtered[0].execute();
-		return filtered[0];
-	else:
-		return null;
+func try_use_ability(slot: CardUI) -> void:
+	if slot.card.has_method("execute") && slot.card.can_use:
+		slot.card.execute();
+		if slot.card.uses <= 0:
+			card_container.erase(slot)
+			slot.queue_free()
+		
 		
 func has_ability(ability: String) -> bool:
-	return cards.any(func(x: Card): return x.data.type == ability);
+	return card_container.any(func(x: CardUI): return x.card.data.type == ability);

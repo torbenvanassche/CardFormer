@@ -18,6 +18,7 @@ func on_enable(options: Dictionary):
 	if options != {}:
 		apply_options.call_deferred(options)
 		
+	print(Manager.instance.player.hand.is_full(), Manager.instance.player.deck.is_empty())
 	while !Manager.instance.player.hand.is_full() && !Manager.instance.player.deck.is_empty():
 		Manager.instance.player.hand.add_card(Manager.instance.player.deck.draw_card())
 	

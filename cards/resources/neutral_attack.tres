@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bdhtci5rwclba"]
+
+[ext_resource type="Script" path="res://cards/card_functions/neutral_attack_card.gd" id="1_cley1"]
+[ext_resource type="Script" path="res://cards/scripts/card_data.gd" id="2_ftsp8"]
+
+[resource]
+script = ExtResource("2_ftsp8")
+sprite_frame = 0
+exec_script = ExtResource("1_cley1")
+cooldown = 1.0
+uses = 1.0
+shuffle_after_use = false
+remove_from_deck_on_use = false
+type = "attack"
