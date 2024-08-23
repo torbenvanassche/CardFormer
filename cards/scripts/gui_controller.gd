@@ -19,6 +19,9 @@ func reset():
 func _ready():
 	GUI.instance = self;
 	Manager.instance.player.player_combat_changed.connect(_set_ui_state);
+	Manager.instance.player.deck.create();
+	_card_added_to_deck();
+	
 	Manager.instance.player.deck.deck_changed.connect(_card_added_to_deck)
 
 func _card_added_to_deck():

@@ -7,10 +7,11 @@ var current_cards: Array[Card];
 
 signal deck_changed();
 
-func _ready() -> void:
+func create() -> void:
 	for card_data in initial_cards:
 		add_card(Card.new(card_data))
 	current_cards = cards.duplicate();
+	deck_changed.emit();
 	
 func remove_card(card_data: CardData):
 	current_cards.erase(card_data);
