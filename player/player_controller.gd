@@ -29,6 +29,7 @@ func _init():
 func _ready():
 	player_trigger.area_entered.connect(_on_enter)
 	player_trigger.area_exited.connect(_on_leave)
+	is_in_combat = false;
 	
 	state_machine = AnimationStateMachine.new(player_sprite)
 

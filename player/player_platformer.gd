@@ -58,7 +58,7 @@ func _process_platformer(delta: float):
 		character_body.velocity.x = move_toward(character_body.velocity.x, 0, speed)
 		
 	if direction != 0:
-		character_body.player_sprite.flip_h = direction < 0;
+		character_body.player_sprite.flip_h = direction > 0;
 		
 	if character_body.is_on_floor():
 		if direction != 0:
