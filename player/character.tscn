@@ -70,9 +70,9 @@ jump_time_to_descent = 0.25
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -20.0
-offset_top = 9.0
+offset_top = -20.0
 offset_right = 20.0
-offset_bottom = 13.0
+offset_bottom = -16.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_b5wm6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i7qjv")

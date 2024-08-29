@@ -62,11 +62,11 @@ func _process_platformer(delta: float):
 		
 	if character_body.is_on_floor():
 		if direction != 0:
-			character_body.state_machine.current_state = "walk";
+			character_body.state_machine.set_state("walk");
 		else:
-			character_body.state_machine.current_state = "idle";
+			character_body.state_machine.set_state("idle");
 	else:
-		character_body.state_machine.current_state = "jump"
+		character_body.state_machine.set_state("jump")
 		
 	if Input.is_action_just_pressed("interact") && character_body.current_triggers.size() != 0:
 		interact();
@@ -84,7 +84,7 @@ func jump():
 	if not _can_jump:
 		return
 	
-	character_body.state_machine.current_state = "jump"
+	character_body.state_machine.set_state("jump");
 	character_body.velocity.y = jump_velocity
 	_jump_cooldown = _initial_jump_cooldown;
 	jump_pressed_not_on_ground = false;

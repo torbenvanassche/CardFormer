@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bitkau11ordpi"
-path="res://.godot/imported/fetid_slime_sprite_sheet.png-774972dd586f660f78fd9612a67ea375.ctex"
+uid="uid://d4nepvcpngkkf"
+path="res://.godot/imported/tilemap_extensions.png-b6e01ddf3f016899ec28abb63a1bb04f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/fetid_slime/fetid_slime_sprite_sheet.png"
-dest_files=["res://.godot/imported/fetid_slime_sprite_sheet.png-774972dd586f660f78fd9612a67ea375.ctex"]
+source_file="res://level_tilemaps/import/tilemap_extensions.png"
+dest_files=["res://.godot/imported/tilemap_extensions.png-b6e01ddf3f016899ec28abb63a1bb04f.ctex"]
 
 [params]
 

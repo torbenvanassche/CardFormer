@@ -4,4 +4,4 @@ var state: AnimationStateMachine;
 
 func _ready() -> void:
 	state = AnimationStateMachine.new($Sprite2D)
-	state.current_state = "start"
+	state.set_state("fire");

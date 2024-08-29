@@ -6,12 +6,11 @@ var projectile = preload("res://scenes/scenes/projectile.tscn")
 func execute(is_front: bool = true):
 	var player: PlayerController = Manager.instance.player;
 	if player.is_in_combat:
-		player.state_machine.current_state = attack_animation_name;
 		player.state_machine.animation_ended.connect(_on_attack_finished.bind(is_front), CONNECT_ONE_SHOT)
+		player.state_machine.set_state(attack_animation_name);
 		
 func _on_attack_finished(anim_finished: String, is_front: bool):
 	if anim_finished == attack_animation_name:
-		Manager.instance.player.state_machine.current_state = "attack_idle";
 		var proj: Projectile = projectile.instantiate();
 		Manager.instance.player.projectile_location.add_child(proj);
 		var tween = Manager.instance.get_tree().root.create_tween().tween_property(proj, "global_position:x", (SceneManager.instance.active_scene as Battler).target.global_position.x, 1).set_ease(Tween.EASE_IN)

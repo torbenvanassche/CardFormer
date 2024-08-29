@@ -11,8 +11,7 @@ extends CharacterBody2D
 @onready var deck: Deck = $Deck;
 @onready var hand: Hand = $Hand;
 	
-var state_machine: StateMachine;
-
+var state_machine: AnimationStateMachine;
 signal player_combat_changed();
 
 var current_triggers: Array[Node2D];
@@ -51,5 +50,5 @@ func set_combat_state(in_combat: bool):
 	if in_combat:
 		velocity = Vector2()
 	is_in_combat = in_combat;
-	player_sprite.flip_h = false;
-	player_sprite.animation = "attack_idle"
+	player_sprite.flip_h = true;
+	player_sprite.animation = "idle"
