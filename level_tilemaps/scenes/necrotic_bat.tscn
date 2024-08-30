@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://rs5nt4pljhpf"]
+[gd_scene load_steps=9 format=3 uid="uid://b6rqvoqq7yv0n"]
 
 [ext_resource type="Script" path="res://level_tilemaps/scripts/enemy.gd" id="1_8jl76"]
 [ext_resource type="SpriteFrames" uid="uid://ccxe316pkrh8n" path="res://level_tilemaps/animations/necrotic_bat.tres" id="2_bflao"]
@@ -40,11 +40,10 @@ frame = 1
 frame_progress = 0.212457
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -20.0
-offset_top = -15.0
+offset_top = -11.0
 offset_right = 20.0
-offset_bottom = -10.0
+offset_bottom = -6.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_k5gs2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bj7ex")
@@ -53,14 +52,13 @@ show_percentage = false
 script = ExtResource("3_8aq5h")
 
 [node name="indicator" type="TextureRect" parent="."]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -12.5
-offset_top = -32.0
-offset_right = 12.5
-offset_bottom = -7.0
+offset_left = -13.0
+offset_top = -28.0
+offset_right = 12.0
+offset_bottom = -3.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(12.5, 12.5)
