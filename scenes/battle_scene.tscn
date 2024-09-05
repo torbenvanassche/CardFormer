@@ -11,7 +11,7 @@ camera = NodePath("Camera2D")
 tile_set = ExtResource("2_w07ph")
 format = 2
 
-[node name="Layer0" type="TileMapLayer" parent="TileMap"]
+[node name="Layer1" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD+/wEACAACAAAAAAD//wEACAACAAAAAAD9/wEACAACAAAAAAD6/wEACAACAAAAAAD5/wEACAABAAAAAAD7/wEACAACAAAAAAD8/wEACAACAAAAAAAAAAEACAACAAAAAAACAAEACAADAAAAAAABAAEACAACAAAAAAA=")
 tile_set = ExtResource("2_w07ph")
